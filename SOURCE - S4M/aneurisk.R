@@ -1,7 +1,7 @@
 ## main paths and sources
 
 ## set up paths and filenames
-mainpath   <- "/Users/moyano/Projects/PROJECT - S4M - science4medicine/"
+mainpath   <- "/Users/moyano/Projects/PROJECT - S4M - science4medicine/aneurisk-analysis/"
 sourcepath <- paste(mainpath, "SOURCE - S4M/", sep = "")
 datapath   <- paste(mainpath, "DATA - S4M/",   sep = "")
 
