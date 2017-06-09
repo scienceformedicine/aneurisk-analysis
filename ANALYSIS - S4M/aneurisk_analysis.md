@@ -3,8 +3,6 @@
 We analyze the aneurisk data set containing decriptive variables of patients showing ruptured and
 unruptured aneurisms.
 
-    (setq fig-dir "/Users/moyano/Projects/PROJECT - S4M - science4medicine/aneurisk-analysis/FIGS - S4M/")
-
 
 # Intro
 
