@@ -20,8 +20,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ ESTADO\_RUPTURA         : chr  "U" "U" "U" "U" &#x2026;
     
-        table(aneurisk$ESTADO_RUPTURA)
-    
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
@@ -45,8 +43,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
     </table>
 
 -   $ LOCALIZACION\_ANEURISMA : chr  "ICA" "ICA" "ICA" "ICA" &#x2026;
-    
-        table(aneurisk$LOCALIZACION_ANEURISMA)
     
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
@@ -84,8 +80,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ SEXO                   : chr  "F" "F" "F" "F" &#x2026;
     
-        table(aneurisk$SEXO)
-    
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
@@ -110,8 +104,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ TIPO\_ANEURISMA         : chr  "LAT" "LAT" "TER" "TER" &#x2026;
     
-        table(aneurisk$TIPO_ANEURISMA)
-    
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
@@ -135,8 +127,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
     </table>
 
 -   $ EDAD                   : int  53 35 43 60 26 45 44 68 39 63 &#x2026;
-    
-        quantile(aneurisk$EDAD)
     
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
@@ -173,8 +163,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ MORPHO\_SHAPE           : int  1 1 0 0 0 2 2 1 2 1 &#x2026;
     
-        table(aneurisk$MORPHO_SHAPE)
-    
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
@@ -205,8 +193,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ MULTIPLE\_ANEURISMA     : logi  FALSE FALSE FALSE TRUE FALSE FALSE &#x2026;
     
-        table(aneurisk$MULTIPLE_ANEURISMA)
-    
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
@@ -231,8 +217,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ neckVesselAngle        : num  42.6 84.1 44 39.8 60 &#x2026;
     
-        summary(aneurisk$neckVesselAngle)
-    
           Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
         0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
     
@@ -241,8 +225,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 -   $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
     -sacVesselAngle presents a skewed distribution.
     
-        summary(aneurisk$sacVesselAngle)
-    
           Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
         0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
     
@@ -250,21 +232,14 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
     
-        summary(aneurisk$bifurcationAngleInPlane)
-    
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-          61.65  107.20  118.96  124.94  143.84  209.67
+         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        61.65  107.20  118.96  124.94  143.84  209.67
     
     ![img](../FIGS-S4M/bifurcationAngleInPlane.png)
     
     Very slightly skewed distribution
 
 -   $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
-    
-        summary(aneurisk$tortuosity)
     
              Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
         0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
@@ -275,10 +250,12 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ aspectRatio\_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
     
-        summary(aneurisk$aspectRatio_star)
-    
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+         
           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
+         0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
     
     ![img](../FIGS-S4M/aspectRatio_star.png)
     
@@ -286,10 +263,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sizeRatio\_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
     
-        summary(aneurisk$sizeRatio_star)
-    
-          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+         0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
     
         ggplot() + geom_histogram(data = aneurisk, aes(sizeRatio_star), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
     
@@ -297,10 +275,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
     
-        summary(aneurisk$sacVolume)
-    
-        Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        2.34   38.10   92.02  207.73  274.31 1312.03
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+           2.34   38.10   92.02  207.73  274.31 1312.03
     
     ![img](../FIGS-S4M/sacVolume.png)
     
@@ -308,10 +287,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sacSurfaceArea         : num  120.5 122.4 23.5 18.1 54.8 &#x2026;
     
-        summary(aneurisk$sacSurfaceArea)
-    
-         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        7.333  51.113  92.777 145.023 203.174 625.718
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+          7.333  51.113  92.777 145.023 203.174 625.718
     
     ![img](../FIGS-S4M/sacSurfaceArea.png)
     
@@ -319,10 +299,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ vdcVolume              : num  111.24 113.72 11.87 9.03 35.9 &#x2026;
     
-        summary(aneurisk$vdcVolume)
-    
-         Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-        2.122   35.285   86.406  187.990  245.624 1223.412
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+            Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+           2.122   35.285   86.406  187.990  245.624 1223.412
     
     ![img](../FIGS-S4M/vdcVolume.png)
     
@@ -330,10 +311,12 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ vdcSurfaceArea         : num  106.8 115.8 21.9 17.3 52.3 &#x2026;
     
-        summary(aneurisk$vdcSurfaceArea)
-    
-         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        6.495  49.520  83.265 129.520 176.755 583.440
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+         
+          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+          6.495  49.520  83.265 129.520 176.755 583.440
     
     ![img](../FIGS-S4M/vdcSurfaceArea.png)
     
@@ -341,8 +324,9 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 &#x2026;
     
-        summary(aneurisk$sacsectionarea)
-    
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
         Length  Class   Mode 
              0   NULL   NULL 
         Warning message:
@@ -361,8 +345,9 @@ Contingency tables for categorical variables and main statistical descriptors fo
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
 
-    glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
-
+    `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+    null device 
+              1
     
     Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
         data = a)
@@ -376,9 +361,6 @@ distribution).
     Degrees of Freedom: 102 Total (i.e. Null);  99 Residual
     Null Deviance:	    140.6 
     Residual Deviance: 124.9 	AIC: 132.9
-
-    mod <- glm(ESTADO_RUPTURA_B ~ neckVesselAngle * bifurcationAngleInPlane, family=binomial(), data = aneurisk, na.action=na.omit)
-    summary(mod)
 
     
     Call:
@@ -411,9 +393,6 @@ distribution).
     
     Number of Fisher Scoring iterations: 4
 
-    mod <- glm(ESTADO_RUPTURA_B ~ tortuosity * aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
-    summary(mod)
-
     
     Call:
     glm(formula = ESTADO_RUPTURA_B ~ tortuosity * aspectRatio_star, 
@@ -437,9 +416,6 @@ distribution).
     AIC: 138.54
     
     Number of Fisher Scoring iterations: 4
-
-    mod <- glm(ESTADO_RUPTURA_B ~ tortuosity + aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
-    summary(mod)
 
     
     Call:
