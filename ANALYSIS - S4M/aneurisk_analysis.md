@@ -21,8 +21,8 @@ may prove useful for future, more realistic models.
 -   $ ESTADO\_RUPTURA         : chr  "U" "U" "U" "U" &#x2026;
     
         table(aneurisk$ESTADO_RUPTURA)
-    
-    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+	<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
     <colgroup>
@@ -43,6 +43,7 @@ may prove useful for future, more realistic models.
     </tr>
     </tbody>
     </table>
+
 
 -   $ LOCALIZACION\_ANEURISMA : chr  "ICA" "ICA" "ICA" "ICA" &#x2026;
     
@@ -252,9 +253,6 @@ may prove useful for future, more realistic models.
 -   $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
     
         summary(aneurisk$bifurcationAngleInPlane)
-    
-        quartz 
-             2
          
           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
           61.65  107.20  118.96  124.94  143.84  209.67
@@ -455,4 +453,104 @@ may prove useful for future, more realistic models.
     AIC: 137.41
     
     Number of Fisher Scoring iterations: 4
+=======
+    ## Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
+    ##     data = a)
+    
+    ## Coefficients:
+    ##               (Intercept)  LOCALIZACION_ANEURISMABAS  
+    ##                    1.0986                    -0.8109  
+    ## LOCALIZACION_ANEURISMAICA  LOCALIZACION_ANEURISMAMCA  
+    ##                   -2.0302                    -1.7346  
+    
+    ## Degrees of Freedom: 102 Total (i.e. Null);  99 Residual
+    ## Null Deviance:	    140.6 
+    ## Residual Deviance: 124.9 	AIC: 132.9
+
+    mod <- glm(ESTADO_RUPTURA_B ~ neckVesselAngle * bifurcationAngleInPlane, family=binomial(), data = aneurisk, na.action=na.omit)
+    summary(mod)
+    ## mod
+    
+    ## Call:
+    ## glm(formula = ESTADO_RUPTURA_B ~ neckVesselAngle * 
+    ##     bifurcationAngleInPlane, family = binomial(), data = aneurisk, 
+    ##     na.action = na.omit)
+    
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.7398  -1.2148   0.7918   0.9983   1.8590  
+    
+    ## Coefficients:
+    ##                                           Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept)                              2.9160159  1.5303636   1.905   0.0567
+    ## neckVesselAngle                         -0.0647486  0.0356804  -1.815   0.0696
+    ## bifurcationAngleInPlane                 -0.0245702  0.0118877  -2.067   0.0387
+    ## neckVesselAngle:bifurcationAngleInPlane  0.0006494  0.0003101   2.094   0.0363
+    
+    ## (Intercept)                             .
+    ## neckVesselAngle                         .
+    ## bifurcationAngleInPlane                 *
+    ## neckVesselAngle:bifurcationAngleInPlane *
+    ## ---
+    ## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    
+    ## (Dispersion parameter for binomial family taken to be 1)
+    
+    ##     Null deviance: 140.6  on 102  degrees of freedom
+    ## Residual deviance: 132.2  on  99  degrees of freedom
+    ## AIC: 140.2
+    
+    ## Number of Fisher Scoring iterations: 4
+
+    mod <- glm(ESTADO_RUPTURA_B ~ tortuosity * aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
+    summary(mod)
+    ## Call:
+    ## glm(formula = ifelse(ESTADO_RUPTURA == "U", 1, 0) ~ tortuosity * 
+    ##     aspectRatio_star, family = binomial(), data = aneurisk, na.action = na.omit)
+    
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.7747  -1.1491   0.7309   1.0205   1.5891  
+    
+    ## Coefficients:
+    ##                             Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept)                   0.6222     0.7292   0.853    0.394
+    ## tortuosity                    0.4067     1.2380   0.329    0.743
+    ## aspectRatio_star             -0.5787     0.4681  -1.236    0.216
+    ## tortuosity:aspectRatio_star   0.6608     0.7276   0.908    0.364
+    
+    ## (Dispersion parameter for binomial family taken to be 1)
+    
+    ##     Null deviance: 140.60  on 102  degrees of freedom
+    ## Residual deviance: 130.54  on  99  degrees of freedom
+    ## AIC: 138.54
+    
+    ## Number of Fisher Scoring iterations: 4
+
+    mod <- glm(ESTADO_RUPTURA_B ~ tortuosity + aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
+    summary(mod)
+    
+    ## Call:
+    ## glm(formula = ifelse(ESTADO_RUPTURA == "U", 1, 0) ~ tortuosity + 
+    ##     aspectRatio_star, family = binomial(), data = aneurisk, na.action = na.omit)
+    
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.9337  -1.1202   0.6983   1.1716   1.3893  
+    
+    ## Coefficients:
+    ##                  Estimate Std. Error z value Pr(>|z|)   
+    ## (Intercept)        0.1341     0.4876   0.275  0.78329   
+    ## tortuosity         1.4507     0.5159   2.812  0.00492 **
+    ## aspectRatio_star  -0.2476     0.2820  -0.878  0.37996   
+    ## ---
+    ## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    
+    ## (Dispersion parameter for binomial family taken to be 1)
+    
+    ##     Null deviance: 140.60  on 102  degrees of freedom
+    ## Residual deviance: 131.41  on 100  degrees of freedom
+    ## AIC: 137.41
+    
+    ## Number of Fisher Scoring iterations: 4
 
