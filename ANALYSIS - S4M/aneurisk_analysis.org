@@ -14,13 +14,6 @@
 We analyze the aneurisk data set containing decriptive variables of patients showing ruptured and
 unruptured aneurisms.
 
-#+BEGIN_SRC emacs-lisp :tangle yes exports: none
-(setq fig-dir "/Users/moyano/Projects/PROJECT - S4M - science4medicine/aneurisk-analysis/FIGS - S4M/")
-#+END_SRC
-
-#+RESULTS:
-: /Users/moyano/Projects/PROJECT - S4M - science4medicine/aneurisk-analysis/FIGS - S4M/
-
 * Intro
 
 In the next section we make an exploratory statistical analysis, to probe the main characteristics
