@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-09 Fri 01:20 -->
+<!-- 2017-06-09 Fri 02:14 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ANEURISK DATA ANALYSIS</title>
@@ -238,13 +238,8 @@ We analyze the aneurisk data set containing decriptive variables of patients sho
 unruptured aneurisms.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #195466; font-weight: bold;">setq</span> fig-dir <span style="color: #2aa889;">"/Users/moyano/Projects/PROJECT - S4M - science4medicine/aneurisk-analysis/FIGS - S4M/"</span>)
-</pre>
-</div>
-
-<div id="outline-container-org7f1d111" class="outline-2">
-<h2 id="org7f1d111"><span class="section-number-2">1</span> Intro</h2>
+<div id="outline-container-org4da1c8d" class="outline-2">
+<h2 id="org4da1c8d"><span class="section-number-2">1</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In the next section we make an exploratory statistical analysis, to probe the main characteristics
@@ -254,17 +249,17 @@ may prove useful for future, more realistic models.
 </div>
 </div>
 
-<div id="outline-container-org17eae3d" class="outline-2">
-<h2 id="org17eae3d"><span class="section-number-2">2</span> Descriptive Analysis</h2>
+<div id="outline-container-org5e02e77" class="outline-2">
+<h2 id="org5e02e77"><span class="section-number-2">2</span> Descriptive Analysis</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
-<pre class="src src-R"><span style="color: #33859e; font-weight: bold;">source</span>(<span style="color: #2aa889;">"../SOURCE - S4M/aneurisk.R"</span>)
+<pre class="src src-R"><span style="color: #33859e; font-weight: bold;">source</span>(<span style="color: #2aa889;">"../SOURCE-S4M/aneurisk.R"</span>)
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org8e2d6bf" class="outline-3">
-<h3 id="org8e2d6bf"><span class="section-number-3">2.1</span> Individual analysis</h3>
+<div id="outline-container-orgce14a53" class="outline-3">
+<h3 id="orgce14a53"><span class="section-number-3">2.1</span> Individual analysis</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li><p>
@@ -502,37 +497,60 @@ $ neckVesselAngle        : num  42.6 84.1 44 39.8 60 &#x2026;
 </div>
 
 <pre class="example">
-  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
 
+ R  U 
+44 59
+
+ACA BAS ICA MCA 
+ 24   7  46  26
+
+ F  M 
+65 38
+
+LAT TER 
+ 40  63
+
+ 0%  25%  50%  75% 100% 
+24.0 43.0 55.0 64.5 85.0
+
+ 0  1  2 
+31 29 43
+
+FALSE  TRUE 
+   86    17
+
+   Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+  0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/neckVesselAngle.png" alt="neckVesselAngle.png" />
+<p><img src="../FIGS-S4M/neckVesselAngle.png" alt="neckVesselAngle.png" />
 </p>
 </div></li>
 
 <li><p>
 $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
+-sacVesselAngle presents a skewed distribution.
 </p>
-<ul class="org-ul">
-<li>sacVesselAngle presents a skewed distribution.</li>
-</ul>
+
 <div class="org-src-container">
 <pre class="src src-R">summary(aneurisk$sacVesselAngle)
 </pre>
 </div>
 
 <pre class="example">
-  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+  0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/sacVesselAngle.png" alt="sacVesselAngle.png" />
+<p><img src="../FIGS-S4M/sacVesselAngle.png" alt="sacVesselAngle.png" />
 </p>
 </div></li>
 
@@ -545,14 +563,18 @@ $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
 </div>
 
 <pre class="example">
- Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-61.65  107.20  118.96  124.94  143.84  209.67
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+ 
+  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  61.65  107.20  118.96  124.94  143.84  209.67
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/bifurcationAngleInPlane.png" alt="bifurcationAngleInPlane.png" />
+<p><img src="../FIGS-S4M/bifurcationAngleInPlane.png" alt="bifurcationAngleInPlane.png" />
 </p>
 </div>
 
@@ -570,6 +592,9 @@ $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
 </div>
 
 <pre class="example">
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
 0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
 
@@ -577,7 +602,7 @@ $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/tortuosity.png" alt="tortuosity.png" />
+<p><img src="../FIGS-S4M/tortuosity.png" alt="tortuosity.png" />
 </p>
 </div>
 
@@ -594,14 +619,17 @@ $ aspectRatio_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
 </div>
 
 <pre class="example">
-  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/aspectRatio_star.png" alt="aspectRatio_star.png" />
+<p><img src="../FIGS-S4M/aspectRatio_star.png" alt="aspectRatio_star.png" />
 </p>
 </div>
 
@@ -618,8 +646,12 @@ $ sizeRatio_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
 </div>
 
 <pre class="example">
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+ 
   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
+ 0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
 
 </pre>
 
@@ -641,14 +673,17 @@ $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
 </div>
 
 <pre class="example">
-Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-2.34   38.10   92.02  207.73  274.31 1312.03
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   2.34   38.10   92.02  207.73  274.31 1312.03
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/sacVolume.png" alt="sacVolume.png" />
+<p><img src="../FIGS-S4M/sacVolume.png" alt="sacVolume.png" />
 </p>
 </div>
 
@@ -665,14 +700,18 @@ $ sacSurfaceArea         : num  120.5 122.4 23.5 18.1 54.8 &#x2026;
 </div>
 
 <pre class="example">
- Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-7.333  51.113  92.777 145.023 203.174 625.718
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+ 
+  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  7.333  51.113  92.777 145.023 203.174 625.718
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/sacSurfaceArea.png" alt="sacSurfaceArea.png" />
+<p><img src="../FIGS-S4M/sacSurfaceArea.png" alt="sacSurfaceArea.png" />
 </p>
 </div>
 
@@ -689,14 +728,18 @@ $ vdcVolume              : num  111.24 113.72 11.87 9.03 35.9 &#x2026;
 </div>
 
 <pre class="example">
- Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-2.122   35.285   86.406  187.990  245.624 1223.412
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+ 
+   Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+   2.122   35.285   86.406  187.990  245.624 1223.412
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/vdcVolume.png" alt="vdcVolume.png" />
+<p><img src="../FIGS-S4M/vdcVolume.png" alt="vdcVolume.png" />
 </p>
 </div>
 
@@ -713,14 +756,17 @@ $ vdcSurfaceArea         : num  106.8 115.8 21.9 17.3 52.3 &#x2026;
 </div>
 
 <pre class="example">
- Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-6.495  49.520  83.265 129.520 176.755 583.440
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  6.495  49.520  83.265 129.520 176.755 583.440
 
 </pre>
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/vdcSurfaceArea.png" alt="vdcSurfaceArea.png" />
+<p><img src="../FIGS-S4M/vdcSurfaceArea.png" alt="vdcSurfaceArea.png" />
 </p>
 </div>
 
@@ -737,6 +783,9 @@ $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 &#x2026;
 </div>
 
 <pre class="example">
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
 Length  Class   Mode 
      0   NULL   NULL 
 Warning message:
@@ -746,7 +795,7 @@ Unknown or uninitialised column: 'sacsectionarea'.
 
 
 <div class="figure">
-<p><img src="../FIGS - S4M/sacSectionArea.png" alt="sacSectionArea.png" />
+<p><img src="../FIGS-S4M/sacSectionArea.png" alt="sacSectionArea.png" />
 </p>
 </div>
 
@@ -757,8 +806,8 @@ Asymmetric, similar to others
 </div>
 </div>
 </div>
-<div id="outline-container-org7374713" class="outline-2">
-<h2 id="org7374713"><span class="section-number-2">3</span> Models</h2>
+<div id="outline-container-org371a1f2" class="outline-2">
+<h2 id="org371a1f2"><span class="section-number-2">3</span> Models</h2>
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 <pre class="src src-R">glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
@@ -766,6 +815,9 @@ Asymmetric, similar to others
 </div>
 
 <pre class="example">
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
 
 Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
     data = a)
@@ -890,7 +942,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: moyano</p>
-<p class="date">Created: 2017-06-09 Fri 01:20</p>
+<p class="date">Created: 2017-06-09 Fri 02:14</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

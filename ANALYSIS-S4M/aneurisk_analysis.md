@@ -13,7 +13,7 @@ may prove useful for future, more realistic models.
 
 # Descriptive Analysis
 
-    source("../SOURCE - S4M/aneurisk.R")
+    source("../SOURCE-S4M/aneurisk.R")
 
 
 ## Individual analysis
@@ -236,18 +236,17 @@ may prove useful for future, more realistic models.
           Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
         0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
     
-    ![img](../FIGS - S4M/neckVesselAngle.png)
+    ![img](../FIGS-S4M/neckVesselAngle.png)
 
 -   $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
-    
-    -   sacVesselAngle presents a skewed distribution.
+    -sacVesselAngle presents a skewed distribution.
     
         summary(aneurisk$sacVesselAngle)
     
           Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
         0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
     
-    ![img](../FIGS - S4M/sacVesselAngle.png)
+    ![img](../FIGS-S4M/sacVesselAngle.png)
 
 -   $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
     
@@ -256,7 +255,7 @@ may prove useful for future, more realistic models.
          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
         61.65  107.20  118.96  124.94  143.84  209.67
     
-    ![img](../FIGS - S4M/bifurcationAngleInPlane.png)
+    ![img](../FIGS-S4M/bifurcationAngleInPlane.png)
     
     Very slightly skewed distribution
 
@@ -267,7 +266,7 @@ may prove useful for future, more realistic models.
              Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
         0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
     
-    ![img](../FIGS - S4M/tortuosity.png)
+    ![img](../FIGS-S4M/tortuosity.png)
     
     Many low tortuosity with a broad group of higher tortuosity
 
@@ -278,7 +277,7 @@ may prove useful for future, more realistic models.
           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
         0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
     
-    ![img](../FIGS - S4M/aspectRatio_star.png)
+    ![img](../FIGS-S4M/aspectRatio_star.png)
     
     Skewed and long tailed
 
@@ -300,7 +299,7 @@ may prove useful for future, more realistic models.
         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
         2.34   38.10   92.02  207.73  274.31 1312.03
     
-    ![img](../FIGS - S4M/sacVolume.png)
+    ![img](../FIGS-S4M/sacVolume.png)
     
     Power-law-ish
 
@@ -311,7 +310,7 @@ may prove useful for future, more realistic models.
          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
         7.333  51.113  92.777 145.023 203.174 625.718
     
-    ![img](../FIGS - S4M/sacSurfaceArea.png)
+    ![img](../FIGS-S4M/sacSurfaceArea.png)
     
     Asymmetric
 
@@ -322,7 +321,7 @@ may prove useful for future, more realistic models.
          Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
         2.122   35.285   86.406  187.990  245.624 1223.412
     
-    ![img](../FIGS - S4M/vdcVolume.png)
+    ![img](../FIGS-S4M/vdcVolume.png)
     
     Highly asymmetric and long-tailed
 
@@ -333,7 +332,7 @@ may prove useful for future, more realistic models.
          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
         6.495  49.520  83.265 129.520 176.755 583.440
     
-    ![img](../FIGS - S4M/vdcSurfaceArea.png)
+    ![img](../FIGS-S4M/vdcSurfaceArea.png)
     
     Almost like a two-mode distribution, with some long tail
 
@@ -346,7 +345,7 @@ may prove useful for future, more realistic models.
         Warning message:
         Unknown or uninitialised column: 'sacsectionarea'.
     
-    ![img](../FIGS - S4M/sacSectionArea.png)
+    ![img](../FIGS-S4M/sacSectionArea.png)
     
     Asymmetric, similar to others
 
