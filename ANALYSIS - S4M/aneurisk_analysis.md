@@ -1,0 +1,271 @@
+\## Thu 06/08/17 17:35:37
+
+We analyze the aneurisk data set containing decriptive variables of patients showing ruptured and
+unruptured aneurisms.
+
+
+# Intro
+
+In the next section we make an exploratory statistical analysis, to probe the main characteristics
+in the data. In the following section we try out some preliminar models to explore correlations that
+may prove useful for future, more realistic models.
+
+
+# Descriptive Analysis
+
+    source("../SOURCE - S4M/aneurisk.R")
+
+
+## Individual analysis
+
+-   $ ESTADO<sub>RUPTURA</sub>         : chr  "U" "U" "U" "U" &#x2026;
+    
+    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+    
+    
+    <colgroup>
+    <col  class="org-left" />
+    
+    <col  class="org-right" />
+    </colgroup>
+    <tbody>
+    <tr>
+    <td class="org-left">R</td>
+    <td class="org-right">44</td>
+    </tr>
+    
+    
+    <tr>
+    <td class="org-left">U</td>
+    <td class="org-right">59</td>
+    </tr>
+    </tbody>
+    </table>
+
+-   $ LOCALIZACION<sub>ANEURISMA</sub> : chr  "ICA" "ICA" "ICA" "ICA" &#x2026;
+    
+        table(aneurisk$LOCALIZACION_ANEURISMA)
+        ## ACA BAS ICA MCA                         
+        ## 24   7  46  26
+-   $ SEXO                   : chr  "F" "F" "F" "F" &#x2026;
+    
+        table(aneurisk$SEXO)
+        ## F  M 
+        ## 65 38
+-   $ TIPO<sub>ANEURISMA</sub>         : chr  "LAT" "LAT" "TER" "TER" &#x2026;
+    
+        table(aneurisk$TIPO_ANEURISMA)
+        ## LAT TER 
+        ## 40  63
+-   $ EDAD                   : int  53 35 43 60 26 45 44 68 39 63 &#x2026;
+    
+        quantile(aneurisk$EDAD)
+        ## 0%  25%  50%  75% 100% 
+        ## 24.0 43.0 55.0 64.5 85.0
+-   $ MORPHO<sub>SHAPE</sub>           : int  1 1 0 0 0 2 2 1 2 1 &#x2026;
+    
+        table(aneurisk$MORPHO_SHAPE)
+        ##  0  1  2 
+        ## 31 29 43
+-   $ MULTIPLE<sub>ANEURISMA</sub>     : logi  FALSE FALSE FALSE TRUE FALSE FALSE &#x2026;
+    
+        table(aneurisk$MULTIPLE_ANEURISMA)
+        ## FALSE  TRUE 
+        ##    86    17
+-   $ neckVesselAngle        : num  42.6 84.1 44 39.8 60 &#x2026;
+    
+        summary(aneurisk$neckVesselAngle)
+        ##   Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+        ## 0.9618  13.5200  27.6900  38.1400  56.8200 126.6000 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(neckVesselAngle))
+-   $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
+    
+        summary(aneurisk$sacVesselAngle)
+        ##   Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+        ## 0.5619  16.6900  32.8600  40.2000  57.0400 147.0000 
+        
+        ## pdf("../FIGS - S4M/sacVesselAngle.png")
+        ggplot() + geom_histogram(data = aneurisk, aes(sacVesselAngle))
+        ## dev.off()
+        ## skewed distribution
+    
+    [[file:../FIGS - S4M/sacVesselAngle.png]]
+
+-   $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
+    
+        summary(aneurisk$bifurcationAngleInPlane)
+        ##  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        ## 61.65  107.20  119.00  124.90  143.80  209.70 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(bifurcationAngleInPlane))
+        ## very slightly skewed distribution
+-   $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
+    
+        summary(aneurisk$tortuosity)
+        ## Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+        ## 0.0002064 0.0186100 0.0852800 0.4013000 0.7594000 1.6800000 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(tortuosity))
+        ## many low tortuosity with a broad group of higher tortuosity
+-   $ aspectRatio<sub>star</sub>       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
+    
+        summary(aneurisk $aspectRatio_star)
+        ##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        ## 0.5778  0.9820  1.3940  1.5380  1.8460  4.9740 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(aspectRatio_star))
+        ## skewed and long tailed
+-   $ sizeRatio<sub>star</sub>         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
+    
+        summary(aneurisk$sizeRatio_star)
+        ## Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        ## 0.7552  1.8580  2.5790  2.9270  3.4750 11.1100 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(sizeRatio_star))
+        ## asymmetric but narrow-ish distribution
+-   $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
+    
+        summary(aneurisk$sacVolume)
+        ##  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+        ## 2.339   38.100   92.020  207.700  274.300 1312.000 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(sacVolume))
+        ## power-law-ish
+-   $ sacSurfaceArea         : num  120.5 122.4 23.5 18.1 54.8 &#x2026;
+    
+        summary(aneurisk$sacSurfaceArea)
+        ##  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        ## 7.333  51.110  92.780 145.000 203.200 625.700 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(sacSurfaceArea))
+        ## asymmetric
+-   $ vdcVolume              : num  111.24 113.72 11.87 9.03 35.9 &#x2026;
+    
+        summary(aneurisk$vdcVolume)
+        ##  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+        ## 2.122   35.280   86.410  188.000  245.600 1223.000 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(vdcVolume))
+        ## highly asymmetric and long-tailed
+-   $ vdcSurfaceArea         : num  106.8 115.8 21.9 17.3 52.3 &#x2026;
+    
+        summary(aneurisk$$vdcSurfaceArea)
+        ##  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        ## 6.496  49.520  83.270 129.500 176.800 583.400 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(vdcSurfaceArea))
+        ## almost like a two-mode distribution, with some long tail
+-   $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 &#x2026;
+    
+        summary(aneurisk$sacSectionArea)
+        ##  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        ## 1.542  10.680  20.560  31.700  44.590 131.300 
+        
+        ggplot() + geom_histogram(data = aneurisk, aes(sacSectionArea))
+        ## asymmetric, similar to others
+
+
+# Models
+
+    glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
+    ## Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
+    ##     data = a)
+    
+    ## Coefficients:
+    ##               (Intercept)  LOCALIZACION_ANEURISMABAS  
+    ##                    1.0986                    -0.8109  
+    ## LOCALIZACION_ANEURISMAICA  LOCALIZACION_ANEURISMAMCA  
+    ##                   -2.0302                    -1.7346  
+    
+    ## Degrees of Freedom: 102 Total (i.e. Null);  99 Residual
+    ## Null Deviance:	    140.6 
+    ## Residual Deviance: 124.9 	AIC: 132.9
+
+    mod <- glm(ESTADO_RUPTURA_B ~ neckVesselAngle * bifurcationAngleInPlane, family=binomial(), data = aneurisk, na.action=na.omit)
+    summary(mod)
+    ## mod
+    
+    ## Call:
+    ## glm(formula = ESTADO_RUPTURA_B ~ neckVesselAngle * 
+    ##     bifurcationAngleInPlane, family = binomial(), data = aneurisk, 
+    ##     na.action = na.omit)
+    
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.7398  -1.2148   0.7918   0.9983   1.8590  
+    
+    ## Coefficients:
+    ##                                           Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept)                              2.9160159  1.5303636   1.905   0.0567
+    ## neckVesselAngle                         -0.0647486  0.0356804  -1.815   0.0696
+    ## bifurcationAngleInPlane                 -0.0245702  0.0118877  -2.067   0.0387
+    ## neckVesselAngle:bifurcationAngleInPlane  0.0006494  0.0003101   2.094   0.0363
+    
+    ## (Intercept)                             .
+    ## neckVesselAngle                         .
+    ## bifurcationAngleInPlane                 *
+    ## neckVesselAngle:bifurcationAngleInPlane *
+    ## ---
+    ## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    
+    ## (Dispersion parameter for binomial family taken to be 1)
+    
+    ##     Null deviance: 140.6  on 102  degrees of freedom
+    ## Residual deviance: 132.2  on  99  degrees of freedom
+    ## AIC: 140.2
+    
+    ## Number of Fisher Scoring iterations: 4
+
+    mod <- glm(ESTADO_RUPTURA_B ~ tortuosity * aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
+    summary(mod)
+    ## Call:
+    ## glm(formula = ifelse(ESTADO_RUPTURA == "U", 1, 0) ~ tortuosity * 
+    ##     aspectRatio_star, family = binomial(), data = aneurisk, na.action = na.omit)
+    
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.7747  -1.1491   0.7309   1.0205   1.5891  
+    
+    ## Coefficients:
+    ##                             Estimate Std. Error z value Pr(>|z|)
+    ## (Intercept)                   0.6222     0.7292   0.853    0.394
+    ## tortuosity                    0.4067     1.2380   0.329    0.743
+    ## aspectRatio_star             -0.5787     0.4681  -1.236    0.216
+    ## tortuosity:aspectRatio_star   0.6608     0.7276   0.908    0.364
+    
+    ## (Dispersion parameter for binomial family taken to be 1)
+    
+    ##     Null deviance: 140.60  on 102  degrees of freedom
+    ## Residual deviance: 130.54  on  99  degrees of freedom
+    ## AIC: 138.54
+    
+    ## Number of Fisher Scoring iterations: 4
+
+    mod <- glm(ESTADO_RUPTURA_B ~ tortuosity + aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
+    summary(mod)
+    
+    ## Call:
+    ## glm(formula = ifelse(ESTADO_RUPTURA == "U", 1, 0) ~ tortuosity + 
+    ##     aspectRatio_star, family = binomial(), data = aneurisk, na.action = na.omit)
+    
+    ## Deviance Residuals: 
+    ##     Min       1Q   Median       3Q      Max  
+    ## -1.9337  -1.1202   0.6983   1.1716   1.3893  
+    
+    ## Coefficients:
+    ##                  Estimate Std. Error z value Pr(>|z|)   
+    ## (Intercept)        0.1341     0.4876   0.275  0.78329   
+    ## tortuosity         1.4507     0.5159   2.812  0.00492 **
+    ## aspectRatio_star  -0.2476     0.2820  -0.878  0.37996   
+    ## ---
+    ## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    
+    ## (Dispersion parameter for binomial family taken to be 1)
+    
+    ##     Null deviance: 140.60  on 102  degrees of freedom
+    ## Residual deviance: 131.41  on 100  degrees of freedom
+    ## AIC: 137.41
+    
+    ## Number of Fisher Scoring iterations: 4
+
