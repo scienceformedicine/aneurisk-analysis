@@ -1,0 +1,4 @@
+## Fri 06/02/17 09:47:09
+
+if(!("tidyverse" %in% loadedNamespaces())) library(tidyverse)
+if(!("caret"     %in% loadedNamespaces())) library(caret)

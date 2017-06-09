@@ -1,2 +1,2 @@
 # aneurisk-analysis
-aneuris data analysis
+Aneurisk data analysis repo
