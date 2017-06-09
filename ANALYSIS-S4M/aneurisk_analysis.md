@@ -1,5 +1,3 @@
-\## Thu 06/08/17 17:35:37
-
 We analyze the aneurisk data set containing decriptive variables of patients showing ruptured and
 unruptured aneurisms.
 
