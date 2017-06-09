@@ -1,4 +1,0 @@
-source("0-aneurisk-packages.R")
-source("1-aneurisk-input_csv.r.R")
-source("2-aneurisk-data-cleansing.R")
-source("3-aneurisk-data-analysis.R")

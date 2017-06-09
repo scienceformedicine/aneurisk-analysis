@@ -1,1 +1,0 @@
-aneurisk <- read_excel("../DATA - S4M/tabla_completa_evelyn.xlsx", "tabla_completa_sac", na = 'NA', col_types= c(rep("factor", 5), "integer", rep("factor", 4), rep("numeric", 53)))

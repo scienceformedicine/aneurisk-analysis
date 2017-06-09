@@ -1,4 +1,0 @@
-## Fri 06/02/17 09:34:09
-
-aneurisk <- read_csv("../DATA - S4M/tabla_simple_evelyn.csv")
-
