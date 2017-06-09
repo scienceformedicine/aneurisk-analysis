@@ -128,34 +128,43 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ EDAD                   : int  53 35 43 60 26 45 44 68 39 63 &#x2026;
     
+    We compute minimum, median and maximum age, along with quantiles 25 and 75. 
+    
     <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
     
     
     <colgroup>
+    <col  class="org-left" />
+    
     <col  class="org-right" />
     </colgroup>
     <tbody>
     <tr>
+    <td class="org-left">min</td>
     <td class="org-right">24</td>
     </tr>
     
     
     <tr>
+    <td class="org-left">q25</td>
     <td class="org-right">43</td>
     </tr>
     
     
     <tr>
+    <td class="org-left">med</td>
     <td class="org-right">55</td>
     </tr>
     
     
     <tr>
+    <td class="org-left">q75</td>
     <td class="org-right">64.5</td>
     </tr>
     
     
     <tr>
+    <td class="org-left">max</td>
     <td class="org-right">85</td>
     </tr>
     </tbody>
@@ -250,12 +259,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ aspectRatio\_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-         
           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-         0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
+        0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
     
     ![img](../FIGS-S4M/aspectRatio_star.png)
     
@@ -263,23 +268,17 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sizeRatio\_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-         0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
+          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
     
-        ggplot() + geom_histogram(data = aneurisk, aes(sizeRatio_star), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
+    ![img](../FIGS-S4M/sizeRatio_star.png)
     
     Asymmetric but narrow-ish distribution
 
 -   $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-           2.34   38.10   92.02  207.73  274.31 1312.03
+        Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        2.34   38.10   92.02  207.73  274.31 1312.03
     
     ![img](../FIGS-S4M/sacVolume.png)
     
@@ -287,11 +286,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sacSurfaceArea         : num  120.5 122.4 23.5 18.1 54.8 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-          7.333  51.113  92.777 145.023 203.174 625.718
+         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        7.333  51.113  92.777 145.023 203.174 625.718
     
     ![img](../FIGS-S4M/sacSurfaceArea.png)
     
@@ -299,11 +295,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ vdcVolume              : num  111.24 113.72 11.87 9.03 35.9 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-            Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-           2.122   35.285   86.406  187.990  245.624 1223.412
+         Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+        2.122   35.285   86.406  187.990  245.624 1223.412
     
     ![img](../FIGS-S4M/vdcVolume.png)
     
@@ -311,12 +304,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ vdcSurfaceArea         : num  106.8 115.8 21.9 17.3 52.3 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-         
-          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-          6.495  49.520  83.265 129.520 176.755 583.440
+         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        6.495  49.520  83.265 129.520 176.755 583.440
     
     ![img](../FIGS-S4M/vdcSurfaceArea.png)
     
@@ -324,17 +313,12 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
 -   $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 &#x2026;
     
-        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-        null device 
-                  1
-        Length  Class   Mode 
-             0   NULL   NULL 
-        Warning message:
-        Unknown or uninitialised column: 'sacsectionarea'.
-    
-    ![img](../FIGS-S4M/sacSectionArea.png)
-    
-    Asymmetric, similar to others
+         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        1.542  10.678  20.560  31.698  44.587 131.281
+
+![img](../FIGS-S4M/sacSectionArea.png)
+
+Asymmetric, similar to others
 
 
 # Regression Models
@@ -345,9 +329,6 @@ Contingency tables for categorical variables and main statistical descriptors fo
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
 
-    `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-    null device 
-              1
     
     Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
         data = a)

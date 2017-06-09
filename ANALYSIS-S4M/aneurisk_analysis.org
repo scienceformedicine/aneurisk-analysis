@@ -35,7 +35,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     table(aneurisk$ESTADO_RUPTURA)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[7d513777f798668a40c642bda0e07364b5d2417a]:
   | R | 44 |
   | U | 59 |
 
@@ -44,7 +44,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     table(aneurisk$LOCALIZACION_ANEURISMA)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[bd3a9f2028571953c8a31c2b825bdab08684682f]:
   | ACA | 24 |
   | BAS |  7 |
   | ICA | 46 |
@@ -55,7 +55,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     table(aneurisk$SEXO)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[bfff3fdeae4c370ec3b0b8ac261fc0609db8f8ab]:
   | F | 65 |
   | M | 38 |
 
@@ -64,28 +64,31 @@ Contingency tables for categorical variables and main statistical descriptors fo
     table(aneurisk$TIPO_ANEURISMA)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[28671bb4e88e414754298b579958e8a05f5015fd]:
   | LAT | 40 |
   | TER | 63 |
 
 - $ EDAD                   : int  53 35 43 60 26 45 44 68 39 63 ...
+
+  We compute minimum, median and maximum age, along with quantiles 25 and 75. 
+
   #+BEGIN_SRC R :exports results :cache yes 
-    quantile(aneurisk$EDAD)
+    quantile(aneurisk$EDAD, probs = c(0, 25, 50, 75, 100)/100)
   #+END_SRC
 
-  #+RESULTS:
-  |   24 |
-  |   43 |
-  |   55 |
-  | 64.5 |
-  |   85 |
+  #+RESULTS[c67dc53654d5d7a5ca50079c965a4191e98454ee]:
+  | min |   24 |
+  | q25 |   43 |
+  | med |   55 |
+  | q75 | 64.5 |
+  | max |   85 |
 
 - $ MORPHO_SHAPE           : int  1 1 0 0 0 2 2 1 2 1 ...
   #+BEGIN_SRC R :exports results :cache yes 
     table(aneurisk$MORPHO_SHAPE)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[096ef8e15adc7ae06d9f8c40d8a91f2425facf88]:
   | 0 | 31 |
   | 1 | 29 |
   | 2 | 43 |
@@ -95,7 +98,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     table(aneurisk$MULTIPLE_ANEURISMA)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[534d2dd459ddcdf639a245f7391a5db7ec3c5f0d]:
   | FALSE | 86 |
   | TRUE  | 17 |
 
@@ -104,7 +107,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$neckVesselAngle)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[bd42683c310428568a20cf695661b1b6aa4583f0]:
   :     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
   :   0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
 
@@ -112,7 +115,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(neckVesselAngle), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue") 
   #+END_SRC
   
-  #+RESULTS:
+  #+RESULTS[c1d37962a23b7f4b82bae044341a08dd11b8e6f3]:
   [[file:../FIGS-S4M/neckVesselAngle.png]]
 
 - $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 ...
@@ -122,7 +125,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
   summary(aneurisk$sacVesselAngle)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[b6d5ed184f728b8fbdd543393b5cf3e748fd576d]:
   :     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
   :   0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
 
@@ -130,15 +133,15 @@ Contingency tables for categorical variables and main statistical descriptors fo
   ggplot() + geom_histogram(data = aneurisk, aes(sacVesselAngle), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
   
-  #+RESULTS:
+  #+RESULTS[6fefbdf6310d3e58f6d3bfbe71d44f96528d5dbb]:
   [[file:../FIGS-S4M/sacVesselAngle.png]]
 
 - $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 ...
-  #+BEGIN_SRC R :results output :exports results
+  #+BEGIN_SRC R :results output :exports results :cache yes
     summary(aneurisk$bifurcationAngleInPlane)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[ff9f0250967554b4718fedfaf4acaf978d9a2801]:
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   61.65  107.20  118.96  124.94  143.84  209.67
 
@@ -146,7 +149,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
       ggplot() + geom_histogram(data = aneurisk, aes(bifurcationAngleInPlane), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[85e3b6fc09b93fda610d9fef8dc40c07d88a32ed]:
   [[file:../FIGS-S4M/bifurcationAngleInPlane.png]]
 
   Very slightly skewed distribution
@@ -157,7 +160,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$tortuosity)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[8e166ffba38c358d02a66afd0c4d1e9bd5a221d7]:
   :      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
   : 0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
 
@@ -165,7 +168,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(tortuosity), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[0722e9ba4ffaae667275f2509ec31c1822122ab3]:
   [[file:../FIGS-S4M/tortuosity.png]]
 
   Many low tortuosity with a broad group of higher tortuosity
@@ -175,7 +178,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$aspectRatio_star)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[2e55d7bb16609ecb47e277ab67a4e92271793c72]:
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :  0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
  
@@ -183,21 +186,25 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(aspectRatio_star), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[c8ec465dc143a739448cad8aa386dcf5e6876529]:
   [[file:../FIGS-S4M/aspectRatio_star.png]]
       
   Skewed and long tailed
 
 - $ sizeRatio_star         : num  2.01 2.83 1.1 1.05 2.42 ...
-  #+BEGIN_SRC R  :results output :exports results
+  #+BEGIN_SRC R  :results output :exports results :cache yes
     summary(aneurisk$sizeRatio_star)
   #+END_SRC
+
+  #+RESULTS[6251236689026dc57166195eb356dbf315b920a5]:
+  :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  :  0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
   
-  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sizeRatio_star.png" :cache yes n 
+  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sizeRatio_star.png" :exports results :cache yes
     ggplot() + geom_histogram(data = aneurisk, aes(sizeRatio_star), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[d52e263203b87e183cb6cb540678dc7eb4a466ad]:
   [[file:../FIGS-S4M/sizeRatio_star.png]]
   
   Asymmetric but narrow-ish distribution
@@ -207,7 +214,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$sacVolume)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[0242d6196db60d570b1ed8d14d35737fe00f696f]:
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :    2.34   38.10   92.02  207.73  274.31 1312.03
 
@@ -215,7 +222,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(sacVolume), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[17d61be2324c8844dbc3bde5d8de25b6ec0b841f]:
   [[file:../FIGS-S4M/sacVolume.png]]
 
   Power-law-ish
@@ -225,7 +232,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$sacSurfaceArea)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[d96071b573aee983c07569f46432126bf04c5ddf]:
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   7.333  51.113  92.777 145.023 203.174 625.718
 
@@ -233,7 +240,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(sacSurfaceArea), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
    #+END_SRC
 
-   #+RESULTS:
+   #+RESULTS[96cdcecfd725176a1a03c7b568aff4cb9b89daa7]:
    [[file:../FIGS-S4M/sacSurfaceArea.png]]
 
   Asymmetric
@@ -243,7 +250,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$vdcVolume)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[6e321a21da97beb9a9a9c7498dd893ba899d1558]:
   :     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
   :    2.122   35.285   86.406  187.990  245.624 1223.412
 
@@ -251,7 +258,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(vdcVolume), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[e62b76ea85782c5313e6c807cbd0d33fea2ba524]:
   [[file:../FIGS-S4M/vdcVolume.png]]
 
   Highly asymmetric and long-tailed
@@ -261,7 +268,7 @@ Contingency tables for categorical variables and main statistical descriptors fo
     summary(aneurisk$vdcSurfaceArea)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[4437d2a80e25a255ac124648c815d48bad49bb68]:
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   6.495  49.520  83.265 129.520 176.755 583.440
   
@@ -269,25 +276,26 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ggplot() + geom_histogram(data = aneurisk, aes(vdcSurfaceArea), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
    #+END_SRC
 
-   #+RESULTS:
+   #+RESULTS[cfbaef9979b304b1636c9db4fa45c4273ff33656]:
    [[file:../FIGS-S4M/vdcSurfaceArea.png]]
  
    Almost like a two-mode distribution, with some long tail
 
 - $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 ...
   #+BEGIN_SRC R  :results output :exports results :cache yes
-    summary(aneurisk$sacsectionarea)
+    summary(aneurisk$sacSectionArea)
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[94dff128d8b35f4ab0a1294103d2d02520d40286]:
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   1.542  10.678  20.560  31.698  44.587 131.281
+
  
   #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sacSectionArea.png" :exports results :cache yes
       ggplot() + geom_histogram(data = aneurisk, aes(sacSectionArea), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
-  #+RESULTS:
+  #+RESULTS[8eb75266b15fbb698ee2afd3f8ef4f192d375c94]:
   [[file:../FIGS-S4M/sacSectionArea.png]]
 
   Asymmetric, similar to others
@@ -300,7 +308,7 @@ distribution).
   glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[6bca5d22de9b0cae71903340798c78e9a1cf33ad]:
 #+begin_example
 
 Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
@@ -322,7 +330,7 @@ Residual Deviance: 124.9 	AIC: 132.9
   summary(mod)
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[ae988ebd11a220ce743cd1045657b5a00361db2c]:
 #+begin_example
 
 Call:
@@ -361,7 +369,7 @@ Number of Fisher Scoring iterations: 4
   summary(mod)
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[754b9d1d04b67b1cc634e95829f97583ebd540af]:
 #+begin_example
 
 Call:
@@ -388,13 +396,12 @@ AIC: 138.54
 Number of Fisher Scoring iterations: 4
 #+end_example
 
-
 #+BEGIN_SRC R  :results output :exports results :cache yes
   mod <- glm(ESTADO_RUPTURA_B ~ tortuosity + aspectRatio_star, family=binomial(), data = aneurisk, na.action=na.omit)
   summary(mod)
 #+END_SRC
 
-#+RESULTS:
+#+RESULTS[d69eb7797c566230f91bc38351ef021201d00c4a]:
 #+begin_example
 
 Call:
