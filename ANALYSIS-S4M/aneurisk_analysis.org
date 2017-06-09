@@ -23,7 +23,7 @@ may prove useful for future, more realistic models.
 * Descriptive Analysis
 
 #+BEGIN_SRC R :exports code :results none :cache yes 
-source("../SOURCE - S4M/aneurisk.R")
+source("../SOURCE-S4M/aneurisk.R")
 #+END_SRC
 
 ** Individual analysis
@@ -105,15 +105,15 @@ source("../SOURCE - S4M/aneurisk.R")
   :     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
   :   0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
 
-  #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/neckVesselAngle.png" :exports results
+  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/neckVesselAngle.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(neckVesselAngle), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue") 
   #+END_SRC
   
   #+RESULTS:
-  [[file:../FIGS - S4M/neckVesselAngle.png]]
+  [[file:../FIGS-S4M/neckVesselAngle.png]]
 
 - $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 ...
-  - sacVesselAngle presents a skewed distribution.
+ -sacVesselAngle presents a skewed distribution.
 
   #+BEGIN_SRC R :results output :exports both
   summary(aneurisk$sacVesselAngle)
@@ -123,12 +123,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
   :   0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
 
-  #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/sacVesselAngle.png" :exports results
+  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sacVesselAngle.png" :exports results
   ggplot() + geom_histogram(data = aneurisk, aes(sacVesselAngle), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
   
   #+RESULTS:
-  [[file:../FIGS - S4M/sacVesselAngle.png]]
+  [[file:../FIGS-S4M/sacVesselAngle.png]]
 
 - $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 ...
   #+BEGIN_SRC R :results output :exports both
@@ -139,12 +139,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   61.65  107.20  118.96  124.94  143.84  209.67
 
-  #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/bifurcationAngleInPlane.png" :exports results
+  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/bifurcationAngleInPlane.png" :exports results
       ggplot() + geom_histogram(data = aneurisk, aes(bifurcationAngleInPlane), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/bifurcationAngleInPlane.png]]
+  [[file:../FIGS-S4M/bifurcationAngleInPlane.png]]
 
   Very slightly skewed distribution
 
@@ -158,12 +158,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
   : 0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
 
-   #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/tortuosity.png" :exports results
+   #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/tortuosity.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(tortuosity), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/tortuosity.png]]
+  [[file:../FIGS-S4M/tortuosity.png]]
 
   Many low tortuosity with a broad group of higher tortuosity
 
@@ -176,12 +176,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :  0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
  
- #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/aspectRatio_star.png" :exports results
+ #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/aspectRatio_star.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(aspectRatio_star), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/aspectRatio_star.png]]
+  [[file:../FIGS-S4M/aspectRatio_star.png]]
       
   Skewed and long tailed
 
@@ -190,12 +190,12 @@ source("../SOURCE - S4M/aneurisk.R")
     summary(aneurisk$sizeRatio_star)
   #+END_SRC
   
-  #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/sizeRatio_star.png" 
+  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sizeRatio_star.png" 
     ggplot() + geom_histogram(data = aneurisk, aes(sizeRatio_star), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/sizeRatio_star.png]]
+  [[file:../FIGS-S4M/sizeRatio_star.png]]
   
   Asymmetric but narrow-ish distribution
   
@@ -208,12 +208,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :    2.34   38.10   92.02  207.73  274.31 1312.03
 
-   #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/sacVolume.png" :exports results
+   #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sacVolume.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(sacVolume), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/sacVolume.png]]
+  [[file:../FIGS-S4M/sacVolume.png]]
 
   Power-law-ish
 
@@ -226,12 +226,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   7.333  51.113  92.777 145.023 203.174 625.718
 
-   #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/sacSurfaceArea.png" :exports results
+   #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sacSurfaceArea.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(sacSurfaceArea), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
    #+END_SRC
 
    #+RESULTS:
-   [[file:../FIGS - S4M/sacSurfaceArea.png]]
+   [[file:../FIGS-S4M/sacSurfaceArea.png]]
 
   Asymmetric
 
@@ -244,12 +244,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
   :    2.122   35.285   86.406  187.990  245.624 1223.412
 
-   #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/vdcVolume.png" :exports results
+   #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/vdcVolume.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(vdcVolume), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/vdcVolume.png]]
+  [[file:../FIGS-S4M/vdcVolume.png]]
 
   Highly asymmetric and long-tailed
 
@@ -262,12 +262,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   6.495  49.520  83.265 129.520 176.755 583.440
   
-   #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/vdcSurfaceArea.png" :exports results
+   #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/vdcSurfaceArea.png" :exports results
     ggplot() + geom_histogram(data = aneurisk, aes(vdcSurfaceArea), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
    #+END_SRC
 
    #+RESULTS:
-   [[file:../FIGS - S4M/vdcSurfaceArea.png]]
+   [[file:../FIGS-S4M/vdcSurfaceArea.png]]
  
    Almost like a two-mode distribution, with some long tail
 
@@ -280,12 +280,12 @@ source("../SOURCE - S4M/aneurisk.R")
   :    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   :   1.542  10.678  20.560  31.698  44.587 131.281
  
-  #+BEGIN_SRC R :results graphics :file "../FIGS - S4M/sacSectionArea.png" :exports results
+  #+BEGIN_SRC R :results graphics :file "../FIGS-S4M/sacSectionArea.png" :exports results
       ggplot() + geom_histogram(data = aneurisk, aes(sacSectionArea), size = 0.1, fill = "blue", alpha = 0.3, colour = "blue")
   #+END_SRC
 
   #+RESULTS:
-  [[file:../FIGS - S4M/sacSectionArea.png]]
+  [[file:../FIGS-S4M/sacSectionArea.png]]
 
   Asymmetric, similar to others
 * Models
