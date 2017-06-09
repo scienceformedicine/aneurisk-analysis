@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-09 Fri 02:17 -->
+<!-- 2017-06-09 Fri 03:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ANEURISK DATA ANALYSIS</title>
@@ -234,19 +234,19 @@ We analyze the aneurisk data set containing decriptive variables of patients sho
 unruptured aneurisms.
 </p>
 
-<div id="outline-container-org0932cb0" class="outline-2">
-<h2 id="org0932cb0"><span class="section-number-2">1</span> Intro</h2>
+<div id="outline-container-orgc85e594" class="outline-2">
+<h2 id="orgc85e594"><span class="section-number-2">1</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-In the next section we make an exploratory statistical analysis, to probe the main characteristics
-in the data. In the following section we try out some preliminar models to explore correlations that
-may prove useful for future, more realistic models.
+In the next section we make an exploratory descriptive statistical analysis, to probe the main
+characteristics in the data. In the following section we try out some preliminary models to explore
+correlations that may prove useful for future, more realistic models.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgf86ed8c" class="outline-2">
-<h2 id="orgf86ed8c"><span class="section-number-2">2</span> Descriptive Analysis</h2>
+<div id="outline-container-orgf817009" class="outline-2">
+<h2 id="orgf817009"><span class="section-number-2">2</span> Descriptive Analysis</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #33859e; font-weight: bold;">source</span>(<span style="color: #2aa889;">"../SOURCE-S4M/aneurisk.R"</span>)
@@ -254,9 +254,13 @@ may prove useful for future, more realistic models.
 </div>
 </div>
 
-<div id="outline-container-org3985a3a" class="outline-3">
-<h3 id="org3985a3a"><span class="section-number-3">2.1</span> Individual analysis</h3>
+<div id="outline-container-org858ed81" class="outline-3">
+<h3 id="org858ed81"><span class="section-number-3">2.1</span> Individual viariable statistical analysis</h3>
 <div class="outline-text-3" id="text-2-1">
+<p>
+Contingency tables for categorical variables and main statistical descriptors for continuous variables.
+</p>
+
 <ul class="org-ul">
 <li><p>
 $ ESTADO_RUPTURA         : chr  "U" "U" "U" "U" &#x2026;
@@ -560,6 +564,9 @@ $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
 </div>
 
 <pre class="example">
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
 0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
 
@@ -608,8 +615,11 @@ $ sizeRatio_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
 </div>
 
 <pre class="example">
-  Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+null device 
+          1
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
 
 </pre>
 
@@ -747,9 +757,17 @@ Asymmetric, similar to others
 </div>
 </div>
 </div>
-<div id="outline-container-orgd649758" class="outline-2">
-<h2 id="orgd649758"><span class="section-number-2">3</span> Models</h2>
+<div id="outline-container-orgfd13eee" class="outline-2">
+<h2 id="orgfd13eee"><span class="section-number-2">3</span> Regression Models</h2>
 <div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgbc701d9" class="outline-3">
+<h3 id="orgbc701d9"><span class="section-number-3">3.1</span> Logistic regression of rupture/unruptered variable</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+A few regression models based on logistic regression (generalized linear model based on the binomial
+distribution).
+</p>
+
 <div class="org-src-container">
 <pre class="src src-R">glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
 </pre>
@@ -878,9 +896,10 @@ Number of Fisher Scoring iterations: 4
 </div>
 </div>
 </div>
+</div>
 <div id="postamble" class="status">
 <p class="author">Author: moyano</p>
-<p class="date">Created: 2017-06-09 Fri 02:17</p>
+<p class="date">Created: 2017-06-09 Fri 03:29</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

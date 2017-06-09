@@ -4,9 +4,9 @@ unruptured aneurisms.
 
 # Intro
 
-In the next section we make an exploratory statistical analysis, to probe the main characteristics
-in the data. In the following section we try out some preliminar models to explore correlations that
-may prove useful for future, more realistic models.
+In the next section we make an exploratory descriptive statistical analysis, to probe the main
+characteristics in the data. In the following section we try out some preliminary models to explore
+correlations that may prove useful for future, more realistic models.
 
 
 # Descriptive Analysis
@@ -14,7 +14,9 @@ may prove useful for future, more realistic models.
     source("../SOURCE-S4M/aneurisk.R")
 
 
-## Individual analysis
+## Individual viariable statistical analysis
+
+Contingency tables for categorical variables and main statistical descriptors for continuous variables.
 
 -   $ ESTADO\_RUPTURA         : chr  "U" "U" "U" "U" &#x2026;
     
@@ -250,8 +252,11 @@ may prove useful for future, more realistic models.
     
         summary(aneurisk$bifurcationAngleInPlane)
     
-         Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        61.65  107.20  118.96  124.94  143.84  209.67
+        `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+        null device 
+                  1
+           Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+          61.65  107.20  118.96  124.94  143.84  209.67
     
     ![img](../FIGS-S4M/bifurcationAngleInPlane.png)
     
@@ -348,7 +353,13 @@ may prove useful for future, more realistic models.
     Asymmetric, similar to others
 
 
-# Models
+# Regression Models
+
+
+## Logistic regression of rupture/unruptered variable
+
+A few regression models based on logistic regression (generalized linear model based on the binomial
+distribution).
 
     glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
 
