@@ -327,38 +327,12 @@ Asymmetric, similar to others
 
 ## Locally Linear Embedding - LLE
 
-    Computing distance matrix ... done
-    Computing low dimensional emmbedding (using 10 nearest neighbours)... done
-    legend:
-      class colour
-    1     1  black
-    2     2    red
+![img](../FIGS-S4M/lle.png)
 
 
 ## IsoMap
 
-    Computing distance matrix ... done
-    Building graph with shortest paths (using 10 nearest neighbours) ... done
-    Computing low dimensional embedding ... done
-    number of samples: 103
-    reduction from 7 to 12345678910 dimensions
-    number of connected components in graph: 1
-    Computing distance matrix ... done
-    Building graph with shortest paths (using 5 nearest and 5 farthest neighbours) ... done
-    Computing low dimensional embedding ... done
-    number of samples: 103
-    reduction from 7 to 12345678910 dimensions
-    number of connected components in graph: 1
-    Computing distance matrix ... done
-    Building graph with shortest paths (using 5 nearest and 5 farthest neighbours) ... done
-    Computing low dimensional embedding ... done
-    number of samples: 103
-    reduction from 7 to 2 dimensions
-    number of connected components in graph: 1
-    legend:
-      class colour
-    1     R  black
-    2     U    red
+![img](../FIGS-S4M/isomap.png)
 
 
 # Regression Models
