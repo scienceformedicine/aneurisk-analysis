@@ -16,6 +16,9 @@ testing  <- a[-inTrain,]
 ## classProbs = TRUE (compute predicted class probabilities to be able to use ROC in train function)
 ctrl <- trainControl(method = "repeatedcv", repeats = 3, classProbs = TRUE, summaryFunction = twoClassSummary)
 
+## ------------------------------------------------------------
+## Partial Least Squares
+
 ## Call train function.
 plsFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "pls", tuneLength = 15, trControl = ctrl, metric = "ROC")
 plsFit
@@ -27,3 +30,8 @@ plsProbs <- predict(plsFit, newdata = testing, type = "prob")
 ## confusion matrix
 confusionMatrix(data = plsClasses, testing$ESTADO_RUPTURA_B)
 
+## ------------------------------------------------------------
+## KNN + PCA
+
+knnFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "knn", preProcess=c("pca"), trControl = trainControl(method = "cv"), metric = "ROC")
+knnFit

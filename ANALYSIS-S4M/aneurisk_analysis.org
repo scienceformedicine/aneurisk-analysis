@@ -299,6 +299,45 @@ Contingency tables for categorical variables and main statistical descriptors fo
   [[file:../FIGS-S4M/sacSectionArea.png]]
 
   Asymmetric, similar to others
+* Dimensionality reduction
+
+#+BEGIN_SRC R  :results output :exports results :cache yes
+library(RDRToolbox)
+
+## prepare matrix 
+a_rdx <- as.matrix(a[, sapply(a, is.numeric)])
+#+END_SRC
+
+#+RESULTS[54b4aa7a6a6ec1ec438020d8c927a9cc2e7a99f3]:
+
+** Locally Linear Embedding - LLE
+#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/lle.png" :exports results :cache yes
+LLE_dim2_a <- LLE(a_rdx, 2, 10)
+plotDR(as.data.frame(LLE_dim2_a), labels = as.numeric(a$ESTADO_RUPTURA_B))
+ggplot(data = LLE_dim2_a %>% as.data.frame, aes(V1, V2)) + geom_point(aes(colour = a$ESTADO_RUPTURA_B == 'U')) + guides(colour=FALSE)
+#+END_SRC
+
+#+RESULTS[c77716ab66290f029c5cf2bf38d6d86397241465]:
+[[file:../FIGS-S4M/lle.png]]
+
+** IsoMap
+#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/isomap.png" :exports results :cache yes
+
+## variable selection 
+## a_rdx <- a_rdx[, c(-1, -5)] ## deselect EDAD and tortuosity
+## a_rdx <- a_rdx[, c(2:8)]
+
+IM_dim1to10_a <- Isomap(a_rdx, 1:10, 10, plotResiduals=TRUE)
+IM_dim1to10_a_mod <- Isomap(a_rdx, 1:10, 10, plotResiduals=TRUE, mod = TRUE)
+
+IM_dim2_a_mod <- Isomap(a_rdx, 2, 10, mod = TRUE)
+##plotDR(as.data.frame(IM_dim2_a_mod), labels = a$ESTADO_RUPTURA_B)
+ggplot(data = IM_dim2_a_mod$dim2 %>% as.data.frame, aes(V1, V2)) + geom_point(aes(colour = a$ESTADO_RUPTURA_B == 'U')) + guides(colour=FALSE)
+#+END_SRC
+
+#+RESULTS[9c1db62255ea18c0eef9ac1dd67120f35cc8b5f9]:
+[[file:../FIGS-S4M/isomap.png]]
+
 * Regression Models
 ** Logistic regression of rupture/unruptered variable
 A few regression models based on logistic regression (generalized linear model based on the binomial

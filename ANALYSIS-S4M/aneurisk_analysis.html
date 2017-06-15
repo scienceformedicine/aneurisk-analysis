@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-09 Fri 03:55 -->
+<!-- 2017-06-15 Thu 14:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ANEURISK DATA ANALYSIS</title>
@@ -234,8 +234,8 @@ We analyze the aneurisk data set containing decriptive variables of patients sho
 unruptured aneurisms.
 </p>
 
-<div id="outline-container-org0f12f12" class="outline-2">
-<h2 id="org0f12f12"><span class="section-number-2">1</span> Intro</h2>
+<div id="outline-container-orgc5f5562" class="outline-2">
+<h2 id="orgc5f5562"><span class="section-number-2">1</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In the next section we make an exploratory descriptive statistical analysis, to probe the main
@@ -245,8 +245,8 @@ correlations that may prove useful for future, more realistic models.
 </div>
 </div>
 
-<div id="outline-container-orgb9d1c79" class="outline-2">
-<h2 id="orgb9d1c79"><span class="section-number-2">2</span> Descriptive Analysis</h2>
+<div id="outline-container-org4f4f47e" class="outline-2">
+<h2 id="org4f4f47e"><span class="section-number-2">2</span> Descriptive Analysis</h2>
 <div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 <pre class="src src-R"><span style="color: #33859e; font-weight: bold;">source</span>(<span style="color: #2aa889;">"../SOURCE-S4M/aneurisk.R"</span>)
@@ -254,8 +254,8 @@ correlations that may prove useful for future, more realistic models.
 </div>
 </div>
 
-<div id="outline-container-org0642983" class="outline-3">
-<h3 id="org0642983"><span class="section-number-3">2.1</span> Individual viariable statistical analysis</h3>
+<div id="outline-container-org5f0dd2f" class="outline-3">
+<h3 id="org5f0dd2f"><span class="section-number-3">2.1</span> Individual viariable statistical analysis</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Contingency tables for categorical variables and main statistical descriptors for continuous variables.
@@ -673,12 +673,40 @@ Asymmetric, similar to others
 </div>
 </div>
 </div>
-<div id="outline-container-org0c1678e" class="outline-2">
-<h2 id="org0c1678e"><span class="section-number-2">3</span> Regression Models</h2>
+<div id="outline-container-org09beb2a" class="outline-2">
+<h2 id="org09beb2a"><span class="section-number-2">3</span> Dimensionality reduction</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgf6827ac" class="outline-3">
-<h3 id="orgf6827ac"><span class="section-number-3">3.1</span> Logistic regression of rupture/unruptered variable</h3>
+</div>
+
+<div id="outline-container-org7d70f2a" class="outline-3">
+<h3 id="org7d70f2a"><span class="section-number-3">3.1</span> Locally Linear Embedding - LLE</h3>
 <div class="outline-text-3" id="text-3-1">
+
+<div class="figure">
+<p><img src="../FIGS-S4M/isomap.png" alt="isomap.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf761754" class="outline-3">
+<h3 id="orgf761754"><span class="section-number-3">3.2</span> IsoMap</h3>
+<div class="outline-text-3" id="text-3-2">
+
+<div class="figure">
+<p><img src="../FIGS-S4M/isomap.png" alt="isomap.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orged58b21" class="outline-2">
+<h2 id="orged58b21"><span class="section-number-2">4</span> Regression Models</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-org9ee6d4f" class="outline-3">
+<h3 id="org9ee6d4f"><span class="section-number-3">4.1</span> Logistic regression of rupture/unruptered variable</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
@@ -791,7 +819,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: moyano</p>
-<p class="date">Created: 2017-06-09 Fri 03:55</p>
+<p class="date">Created: 2017-06-15 Thu 14:47</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
