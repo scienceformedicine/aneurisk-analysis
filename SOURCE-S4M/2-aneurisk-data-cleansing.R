@@ -16,9 +16,9 @@ aneurisk$TIPO_ANEURISMA <- as.factor(aneurisk$TIPO_ANEURISMA)
 aneurisk$MORPHO_SHAPE <- as.factor(aneurisk$MORPHO_SHAPE)
 aneurisk$ID <- as.factor(aneurisk$ID)
 
-## map boolean to 0 & 1
-aneurisk$ESTADO_RUPTURA_B     <- ifelse(aneurisk$ESTADO_RUPTURA=='U', 0, 1)
-aneurisk$TIPO_ANEURISMA_B     <- ifelse(aneurisk$TIPO_ANEURISMA=='LAT', 0, 1)
-aneurisk$MULTIPLE_ANEURISMA_B <- ifelse(aneurisk$MULTIPLE_ANEURISMA, 1, 0)
+## map boolean variables to factor 0 & 1
+aneurisk$ESTADO_RUPTURA_B     <- aneurisk$ESTADO_RUPTURA %>% as.factor ## ifelse(aneurisk$ESTADO_RUPTURA=='U', 0, 1) %>% as.factor
+aneurisk$TIPO_ANEURISMA_B     <- ifelse(aneurisk$TIPO_ANEURISMA=='LAT', 0, 1) %>% as.factor
+aneurisk$MULTIPLE_ANEURISMA_B <- ifelse(aneurisk$MULTIPLE_ANEURISMA, 1, 0) %>% as.factor
 
 a <- aneurisk

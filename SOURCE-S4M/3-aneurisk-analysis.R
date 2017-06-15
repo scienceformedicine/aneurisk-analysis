@@ -1,6 +1,0 @@
-## aneurisk analysis - Fri 06/02/17 11:00:25
-
-## general descritive statistics
-str(aneurisk)
-
-
