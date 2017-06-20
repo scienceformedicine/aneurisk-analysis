@@ -2,43 +2,45 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org182cc90">1. Intro</a></li>
-<li><a href="#orgcc0aa9f">2. Descriptive Analysis</a>
+<li><a href="#org56d5c74">1. Intro</a></li>
+<li><a href="#org220170f">2. Descriptive Analysis</a>
 <ul>
-<li><a href="#orgd47d1cc">2.1. Individual viariable statistical analysis</a>
+<li><a href="#org7d1854d">2.1. Individual viariable statistical analysis</a>
 <ul>
-<li><a href="#org603a49b">2.1.1. $ ESTADO_RUPTURA         : chr  "U" "U" "U" "U" &#x2026;</a></li>
-<li><a href="#orgd6ab802">2.1.2. $ LOCALIZACION_ANEURISMA : chr  "ICA" "ICA" "ICA" "ICA" &#x2026;</a></li>
-<li><a href="#orgabbaf0c">2.1.3. $ SEXO                   : chr  "F" "F" "F" "F" &#x2026;</a></li>
-<li><a href="#org0c8afa0">2.1.4. $ TIPO_ANEURISMA         : chr  "LAT" "LAT" "TER" "TER" &#x2026;</a></li>
-<li><a href="#orga682fc6">2.1.5. $ EDAD                   : int  53 35 43 60 26 45 44 68 39 63 &#x2026;</a></li>
-<li><a href="#org2ef0b6b">2.1.6. $ MORPHO_SHAPE           : int  1 1 0 0 0 2 2 1 2 1 &#x2026;</a></li>
-<li><a href="#orgc22ba19">2.1.7. $ MULTIPLE_ANEURISMA     : logi  FALSE FALSE FALSE TRUE FALSE FALSE &#x2026;</a></li>
-<li><a href="#orgdc587b5">2.1.8. $ neckVesselAngle        : num  42.6 84.1 44 39.8 60 &#x2026;</a></li>
-<li><a href="#org94c5fa4">2.1.9. $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;</a></li>
-<li><a href="#org5fc1ccc">2.1.10. $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;</a></li>
-<li><a href="#orgd4b83a8">2.1.11. $ aspectRatio_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;</a></li>
-<li><a href="#org3f95fce">2.1.12. $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;</a></li>
-<li><a href="#orgce76f61">2.1.13. $ sacSurfaceArea         : num  120.5 122.4 23.5 18.1 54.8 &#x2026;</a></li>
-<li><a href="#org5c7f4c6">2.1.14. $ vdcVolume              : num  111.24 113.72 11.87 9.03 35.9 &#x2026;</a></li>
-<li><a href="#org2665002">2.1.15. $ vdcSurfaceArea         : num  106.8 115.8 21.9 17.3 52.3 &#x2026;</a></li>
-<li><a href="#org682f2f5">2.1.16. $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 &#x2026;</a></li>
+<li><a href="#org7ed24f7">2.1.1. $ ESTADO_RUPTURA</a></li>
+<li><a href="#org5754bff">2.1.2. $ LOCALIZACION_ANEURISMA</a></li>
+<li><a href="#org84b2a40">2.1.3. $ SEXO</a></li>
+<li><a href="#org4f2fa19">2.1.4. $ TIPO_ANEURISMA</a></li>
+<li><a href="#org5d8cc49">2.1.5. $ EDAD</a></li>
+<li><a href="#orgca7d00d">2.1.6. $ MORPHO_SHAPE</a></li>
+<li><a href="#org7f88202">2.1.7. $ MULTIPLE_ANEURISMA</a></li>
+<li><a href="#org8a7edf0">2.1.8. $ neckVesselAngle</a></li>
+<li><a href="#orgfd84291">2.1.9. $ sacVesselAngle</a></li>
+<li><a href="#orgb239df5">2.1.10. $ bifurcationAngleInPlane</a></li>
+<li><a href="#orgf22d5c5">2.1.11. $ tortuosity</a></li>
+<li><a href="#orgcd71af8">2.1.12. $ aspectRatio_star</a></li>
+<li><a href="#org3e119d2">2.1.13. $ sizeRatio_star</a></li>
+<li><a href="#orgad72b51">2.1.14. $ sacVolume</a></li>
+<li><a href="#org80182f3">2.1.15. $ sacSurfaceArea</a></li>
+<li><a href="#org4e94323">2.1.16. $ vdcVolume</a></li>
+<li><a href="#org6a3a813">2.1.17. $ vdcSurfaceArea</a></li>
+<li><a href="#org5c20a14">2.1.18. $ sacSectionArea</a></li>
 </ul>
 </li>
-<li><a href="#org4ffbd67">2.2. Histograms of sacVolume and sacSurfaceArea</a></li>
+<li><a href="#org15aedaf">2.2. Histograms of sacVolume and sacSurfaceArea</a></li>
 </ul>
 </li>
-<li><a href="#org52ef641">3. Variable selection</a></li>
-<li><a href="#org27ef1bb">4. Data preprocessing</a></li>
-<li><a href="#orgcb788f5">5. Non-linear manifold learning</a>
+<li><a href="#orga9b0e01">3. Variable selection</a></li>
+<li><a href="#orgcc91bfa">4. Data preprocessing</a></li>
+<li><a href="#org174869a">5. Non-linear manifold learning</a>
 <ul>
-<li><a href="#org9fb113e">5.1. Locally Linear Embedding - LLE</a></li>
-<li><a href="#org1c952c6">5.2. IsoMap</a></li>
+<li><a href="#org1af5686">5.1. Locally Linear Embedding - LLE</a></li>
+<li><a href="#org511880e">5.2. IsoMap</a></li>
 </ul>
 </li>
-<li><a href="#orgc312392">6. Regression Models</a>
+<li><a href="#org41aee48">6. Regression Models</a>
 <ul>
-<li><a href="#orgd4a22f8">6.1. Logistic regression of rupture/unruptered variable</a></li>
+<li><a href="#org48014fa">6.1. Logistic regression of rupture/unruptered variable</a></li>
 </ul>
 </li>
 </ul>
@@ -48,7 +50,7 @@ We analyze the aneurisk data set containing decriptive variables of patients sho
 unruptured aneurisms.
 
 
-<a id="org182cc90"></a>
+<a id="org56d5c74"></a>
 
 # Intro
 
@@ -57,21 +59,23 @@ characteristics in the data. In the following section we try out some preliminar
 correlations that may prove useful for future, more realistic models.
 
 
-<a id="orgcc0aa9f"></a>
+<a id="org220170f"></a>
 
 # Descriptive Analysis
 
 
-<a id="orgd47d1cc"></a>
+<a id="org7d1854d"></a>
 
 ## Individual viariable statistical analysis
 
 Contingency tables for categorical variables and main statistical descriptors for continuous variables.
 
 
-<a id="org603a49b"></a>
+<a id="org7ed24f7"></a>
 
-### $ ESTADO\_RUPTURA         : chr  "U" "U" "U" "U" &#x2026;
+### $ ESTADO\_RUPTURA
+
+    chr  "U" "U" "U" "U" ...
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -96,9 +100,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 </table>
 
 
-<a id="orgd6ab802"></a>
+<a id="org5754bff"></a>
 
-### $ LOCALIZACION\_ANEURISMA : chr  "ICA" "ICA" "ICA" "ICA" &#x2026;
+### $ LOCALIZACION\_ANEURISMA
+
+    chr  "ICA" "ICA" "ICA" "ICA" ...
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -135,9 +141,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 </table>
 
 
-<a id="orgabbaf0c"></a>
+<a id="org84b2a40"></a>
 
-### $ SEXO                   : chr  "F" "F" "F" "F" &#x2026;
+### $ SEXO
+
+    chr  "F" "F" "F" "F" ...
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -162,9 +170,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 </table>
 
 
-<a id="org0c8afa0"></a>
+<a id="org4f2fa19"></a>
 
-### $ TIPO\_ANEURISMA         : chr  "LAT" "LAT" "TER" "TER" &#x2026;
+### $ TIPO\_ANEURISMA
+
+    chr  "LAT" "LAT" "TER" "TER" ...
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -189,9 +199,11 @@ Contingency tables for categorical variables and main statistical descriptors fo
 </table>
 
 
-<a id="orga682fc6"></a>
+<a id="org5d8cc49"></a>
 
-### $ EDAD                   : int  53 35 43 60 26 45 44 68 39 63 &#x2026;
+### $ EDAD
+
+    int  53 35 43 60 26 45 44 68 39 63 ...
 
 We compute minimum, median and maximum age, along with quantiles 25 and 75. 
 
@@ -236,9 +248,11 @@ We compute minimum, median and maximum age, along with quantiles 25 and 75.
 </table>
 
 
-<a id="org2ef0b6b"></a>
+<a id="orgca7d00d"></a>
 
-### $ MORPHO\_SHAPE           : int  1 1 0 0 0 2 2 1 2 1 &#x2026;
+### $ MORPHO\_SHAPE
+
+    int  1 1 0 0 0 2 2 1 2 1 ...
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -269,9 +283,11 @@ We compute minimum, median and maximum age, along with quantiles 25 and 75.
 </table>
 
 
-<a id="orgc22ba19"></a>
+<a id="org7f88202"></a>
 
-### $ MULTIPLE\_ANEURISMA     : logi  FALSE FALSE FALSE TRUE FALSE FALSE &#x2026;
+### $ MULTIPLE\_ANEURISMA
+
+    logi  FALSE FALSE FALSE TRUE FALSE FALSE ...
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -296,9 +312,11 @@ We compute minimum, median and maximum age, along with quantiles 25 and 75.
 </table>
 
 
-<a id="orgdc587b5"></a>
+<a id="org8a7edf0"></a>
 
-### $ neckVesselAngle        : num  42.6 84.1 44 39.8 60 &#x2026;
+### $ neckVesselAngle
+
+    num  42.6 84.1 44 39.8 60 ...
 
       Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     0.9618  13.5239  27.6917  38.1383  56.8219 126.6495
@@ -308,9 +326,11 @@ We compute minimum, median and maximum age, along with quantiles 25 and 75.
 ![img](../FIGS-S4M/neckVesselAngle_UR.png)
 
 
-<a id="org94c5fa4"></a>
+<a id="orgfd84291"></a>
 
-### $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
+### $ sacVesselAngle
+
+    num  33.82 94.53 52.29 4.98 56.48 ...
 
 sacVesselAngle presents a skewed distribution.
 
@@ -322,9 +342,11 @@ sacVesselAngle presents a skewed distribution.
 ![img](../FIGS-S4M/sacVesselAngle_UR.png)
 
 
-<a id="org5fc1ccc"></a>
+<a id="orgb239df5"></a>
 
-### $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
+### $ bifurcationAngleInPlane
+
+    num  76.7 116.8 123.7 129.8 117.1 ...
 
      Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     61.65  107.20  118.96  124.94  143.84  209.67
@@ -333,21 +355,28 @@ sacVesselAngle presents a skewed distribution.
 
 Very slightly skewed distribution
 
--   $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
-    
-             Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
-        0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
-    
-    ![img](../FIGS-S4M/tortuosity.png)
-    
-    Many low tortuosity with a broad group of higher tortuosity
-    
-    ![img](../FIGS-S4M/tortuosity_UR.png)
+
+<a id="orgf22d5c5"></a>
+
+### $ tortuosity
+
+    num  0.683 1.153 0.805 0.838 0.549 ...
+
+         Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+    0.0002064 0.0186107 0.0852833 0.4012799 0.7593916 1.6800227
+
+![img](../FIGS-S4M/tortuosity.png)
+
+Many low tortuosity with a broad group of higher tortuosity
+
+![img](../FIGS-S4M/tortuosity_UR.png)
 
 
-<a id="orgd4b83a8"></a>
+<a id="orgcd71af8"></a>
 
-### $ aspectRatio\_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
+### $ aspectRatio\_star
+
+    num  1.499 1.839 0.948 0.706 1.827 ...
 
       Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     0.5778  0.9820  1.3940  1.5377  1.8465  4.9736
@@ -358,21 +387,28 @@ Skewed and long tailed
 
 ![img](../FIGS-S4M/aspectRatio_star_UR.png)
 
--   $ sizeRatio\_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
-    
-          Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-        0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
-    
-    ![img](../FIGS-S4M/sizeRatio_star.png)
-    
-    Asymmetric but narrow-ish distribution
-    
-    ![img](../FIGS-S4M/sizeRatio_star_UR.png)
+
+<a id="org3e119d2"></a>
+
+### $ sizeRatio\_star
+
+    num  2.01 2.83 1.1 1.05 2.42 ...
+
+      Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    0.7552  1.8575  2.5787  2.9272  3.4754 11.1081
+
+![img](../FIGS-S4M/sizeRatio_star.png)
+
+Asymmetric but narrow-ish distribution
+
+![img](../FIGS-S4M/sizeRatio_star_UR.png)
 
 
-<a id="org3f95fce"></a>
+<a id="orgad72b51"></a>
 
-### $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
+### $ sacVolume
+
+    num  125.26 119 12.74 9.38 37.93 ...
 
     Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     2.34   38.10   92.02  207.73  274.31 1312.03
@@ -382,9 +418,11 @@ Skewed and long tailed
 Power-law-ish
 
 
-<a id="orgce76f61"></a>
+<a id="org80182f3"></a>
 
-### $ sacSurfaceArea         : num  120.5 122.4 23.5 18.1 54.8 &#x2026;
+### $ sacSurfaceArea
+
+    num  120.5 122.4 23.5 18.1 54.8 ...
 
      Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     7.333  51.113  92.777 145.023 203.174 625.718
@@ -394,9 +432,11 @@ Power-law-ish
 Asymmetric
 
 
-<a id="org5c7f4c6"></a>
+<a id="org4e94323"></a>
 
-### $ vdcVolume              : num  111.24 113.72 11.87 9.03 35.9 &#x2026;
+### $ vdcVolume
+
+    num  111.24 113.72 11.87 9.03 35.9 ...
 
      Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
     2.122   35.285   86.406  187.990  245.624 1223.412
@@ -406,9 +446,11 @@ Asymmetric
 Highly asymmetric and long-tailed
 
 
-<a id="org2665002"></a>
+<a id="org6a3a813"></a>
 
-### $ vdcSurfaceArea         : num  106.8 115.8 21.9 17.3 52.3 &#x2026;
+### $ vdcSurfaceArea
+
+    num  106.8 115.8 21.9 17.3 52.3 ...
 
      Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     6.495  49.520  83.265 129.520 176.755 583.440
@@ -418,9 +460,11 @@ Highly asymmetric and long-tailed
 Almost like a two-mode distribution, with some long tail
 
 
-<a id="org682f2f5"></a>
+<a id="org5c20a14"></a>
 
-### $ sacSectionArea         : num  21.94 18.49 6.14 4.91 9.73 &#x2026;
+### $ sacSectionArea
+
+    num  21.94 18.49 6.14 4.91 9.73 ...
 
      Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
     1.542  10.678  20.560  31.698  44.587 131.281
@@ -430,7 +474,7 @@ Almost like a two-mode distribution, with some long tail
 Asymmetric, similar to others
 
 
-<a id="org4ffbd67"></a>
+<a id="org15aedaf"></a>
 
 ## Histograms of sacVolume and sacSurfaceArea
 
@@ -442,7 +486,7 @@ aneurisms.
 ![img](../FIGS-S4M/sacSurfaceArea_histogram.png)
 
 
-<a id="org52ef641"></a>
+<a id="orga9b0e01"></a>
 
 # Variable selection
 
@@ -468,7 +512,7 @@ On the other hand, we do not consider the following variables:
 -   bifurcationAngleInPlane
 
 
-<a id="org27ef1bb"></a>
+<a id="orgcc91bfa"></a>
 
 # Data preprocessing
 
@@ -481,21 +525,21 @@ variables with less skewness. In particular we are able to combine any of the fo
 -   PCA (dimensionality reduction, both d=2 and d=3)
 
 
-<a id="orgcb788f5"></a>
+<a id="org174869a"></a>
 
 # Non-linear manifold learning
 
 We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
 
 
-<a id="org9fb113e"></a>
+<a id="org1af5686"></a>
 
 ## Locally Linear Embedding - LLE
 
 ![img](../FIGS-S4M/lle.png)
 
 
-<a id="org1c952c6"></a>
+<a id="org511880e"></a>
 
 ## IsoMap
 
@@ -515,12 +559,12 @@ In 3D:
 <img style="WIDTH:600px; HEIGHT:420px; border:0" src="../FIGS-S4M/isomap3d.png">
 
 
-<a id="orgc312392"></a>
+<a id="org41aee48"></a>
 
 # Regression Models
 
 
-<a id="orgd4a22f8"></a>
+<a id="org48014fa"></a>
 
 ## Logistic regression of rupture/unruptered variable
 
@@ -558,6 +602,14 @@ distribution).
     
     Number of Fisher Scoring iterations: 3
 
+    Computing distance matrix ... done
+    Building graph with shortest paths (using 10 nearest neighbours) ... done
+    Computing low dimensional embedding ... done
+    number of samples: 103
+    reduction from 4 to 3 dimensions
+    number of connected components in graph: 1
+    quartz 
+         2
     
     Call:
     glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
