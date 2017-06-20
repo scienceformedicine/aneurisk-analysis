@@ -4,7 +4,7 @@
 datafile <- paste(datapath, "tabla_completa_evelyn.xlsx", sep="")
 
 ## read data file
-aneurisk <- read_excel(datafile, na = 'NA')
+aneurisk_completa <- read_excel(datafile, na = 'NA')
 
 ## fix accented column names
-names(aneurisk) <- sapply(names(aneurisk), function(x) gsub("'", "", borr <- iconv(x, to='ASCII//TRANSLIT')))
+names(aneurisk_completa) <- sapply(names(aneurisk_completa), function(x) gsub("'", "", borr <- iconv(x, to='ASCII//TRANSLIT')))

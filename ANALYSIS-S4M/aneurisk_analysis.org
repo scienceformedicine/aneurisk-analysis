@@ -1,6 +1,6 @@
 #+TITLE: ANEURISK DATA ANALYSIS
 #+STARTUP: showall expand
-#+options: toc:nil
+#+options: toc: yes
 #+OPTIONS: ^:nil _:nil
 
 # Babel settings
@@ -118,6 +118,17 @@ Contingency tables for categorical variables and main statistical descriptors fo
   #+RESULTS[c1d37962a23b7f4b82bae044341a08dd11b8e6f3]:
   [[file:../FIGS-S4M/neckVesselAngle.png]]
 
+
+  #+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/neckVesselAngle_UR.png" :exports results :cache yes 
+    ggplot(data = aneurisk, x = neckVesselAngle) + geom_histogram(aes(x = neckVesselAngle, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3,
+                                                          colour =
+                                                              "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO","ROTO")) + xlab("neckVesselAngle") + ylab("Frecuencia") 
+
+  #+END_SRC
+
+  #+RESULTS[5e55c83eb39e566b2f92253365cf280b91480a33]:
+  [[file:../FIGS-S4M/neckVesselAngle_UR.png]]
+
 - $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 ...
  -sacVesselAngle presents a skewed distribution.
 
@@ -135,6 +146,17 @@ Contingency tables for categorical variables and main statistical descriptors fo
   
   #+RESULTS[6fefbdf6310d3e58f6d3bfbe71d44f96528d5dbb]:
   [[file:../FIGS-S4M/sacVesselAngle.png]]
+
+  #+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/sacVesselAngle_UR.png" :exports results :cache yes 
+    ggplot(data = aneurisk, x = sacVesselAngle) + geom_histogram(aes(x = sacVesselAngle, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3,
+                                                          colour =
+                                                              "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO","ROTO")) + xlab("sacVesselAngle") + ylab("Frecuencia") 
+
+  #+END_SRC
+
+  #+RESULTS[bc503db5dd590cff871cf45bb2dbe59808fd5730]:
+  [[file:../FIGS-S4M/sacVesselAngle_UR.png]]
+
 
 - $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 ...
   #+BEGIN_SRC R :results output :exports results :cache yes
@@ -173,6 +195,15 @@ Contingency tables for categorical variables and main statistical descriptors fo
 
   Many low tortuosity with a broad group of higher tortuosity
 
+  #+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/tortuosity_UR.png" :exports results :cache yes 
+    ggplot(data = aneurisk, x = tortuosity) + geom_histogram(aes(x = tortuosity, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3,
+                                                          colour =
+                                                              "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO","ROTO")) + xlab("Tortuosidad") + ylab("Frecuencia") 
+  #+END_SRC
+
+  #+RESULTS[22dd3b43cfdb42f8fb46c18306b6728cd3c7be55]:
+  [[file:../FIGS-S4M/tortuosity_UR.png]]
+
 - $ aspectRatio_star       : num  1.499 1.839 0.948 0.706 1.827 ...
   #+BEGIN_SRC R :results output :exports results :cache yes 
     summary(aneurisk$aspectRatio_star)
@@ -191,6 +222,16 @@ Contingency tables for categorical variables and main statistical descriptors fo
       
   Skewed and long tailed
 
+  #+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/aspectRatio_star_UR.png" :exports results :cache yes 
+    ggplot(data = aneurisk, x = aspectRatio_star) + geom_histogram(aes(x = aspectRatio_star, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3,
+                                                          colour =
+                                                              "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO","ROTO")) + xlab("aspectRatio_star") + ylab("Frecuencia") 
+
+  #+END_SRC
+
+  #+RESULTS[7f2ea5bad793d9dd0929be81d4455c71d161706e]:
+  [[file:../FIGS-S4M/aspectRatio_star_UR.png]]
+
 - $ sizeRatio_star         : num  2.01 2.83 1.1 1.05 2.42 ...
   #+BEGIN_SRC R  :results output :exports results :cache yes
     summary(aneurisk$sizeRatio_star)
@@ -208,6 +249,16 @@ Contingency tables for categorical variables and main statistical descriptors fo
   [[file:../FIGS-S4M/sizeRatio_star.png]]
   
   Asymmetric but narrow-ish distribution
+
+  #+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/sizeRatio_star_UR.png" :exports results :cache yes 
+    ggplot(data = aneurisk, x = sizeRatio_star) + geom_histogram(aes(x = sizeRatio_star, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3,
+                                                          colour =
+                                                              "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO","ROTO")) + xlab("sizeRatio_star") + ylab("Frecuencia") 
+
+  #+END_SRC
+
+  #+RESULTS[dab4779d54942fdd8ee3fc07a5d0002b02723070]:
+  [[file:../FIGS-S4M/sizeRatio_star_UR.png]]
   
 - $ sacVolume              : num  125.26 119 12.74 9.38 37.93 ...
   #+BEGIN_SRC R  :results output :exports results :cache yes 
