@@ -1,14 +1,13 @@
 #+TITLE: ANEURISK DATA ANALYSIS
 #+STARTUP: showall expand
-#+options: toc: 2
 #+OPTIONS: ^:nil _:nil
+#+OPTIONS: toc 2
 
 # Babel settings
 #+PROPERTY: header-args:R  :session *S4M*
 #+PROPERTY: cache yes 
 #+PROPERTY: exports results
 #+PROPERTY: tangle yes
-#+PROPERTY:
 
 # started around Thu 06/08/17 17:35:37
 
@@ -399,7 +398,6 @@ variables with less skewness. In particular we are able to combine any of the fo
 - scale  (standard deviation for normalization)
 - Box-Cox transformation (decrease skewness)
 - PCA (dimensionality reduction, both d=2 and d=3)
-
   
 * Non-linear manifold learning
 We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
@@ -464,18 +462,17 @@ In 3D:
 <img style="WIDTH:600px; HEIGHT:420px; border:0" src="../FIGS-S4M/isomap3d.png">
 #+END_EXPORT
 
-
 * Regression Models
 ** Logistic regression of rupture/unruptered variable
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
 
-#+BEGIN_SRC R  :results output :exports both :cache no
+#+BEGIN_SRC R  :results output :exports both :cache yes
 logreg <- glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = "binomial", data = a) 
 print(summary(logreg))
 #+END_SRC
 
-#+RESULTS[cbeb7a9599510a2b76acb162d6befcf895386aa8]:
+#+RESULTS[ec67f51daa0c5bcbd14c37b31a824471dfc9ab9e]:
 #+begin_example
 
 Call:
@@ -506,26 +503,38 @@ AIC: 138.45
 Number of Fisher Scoring iterations: 3
 #+end_example
 
-
 #+BEGIN_SRC R :results output :exports results :cache yes
-  glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
+  mod <- glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)
+  summary(mod)
 #+END_SRC
 
 #+RESULTS[6bca5d22de9b0cae71903340798c78e9a1cf33ad]:
 #+begin_example
 
-Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
+Call:
+glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
     data = a)
 
-Coefficients:
-              (Intercept)  LOCALIZACION_ANEURISMABAS  
-                   1.0986                    -0.8109  
-LOCALIZACION_ANEURISMAICA  LOCALIZACION_ANEURISMAMCA  
-                  -2.0302                    -1.7346  
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.6651  -0.8684  -0.8150   0.9082   1.5898  
 
-Degrees of Freedom: 102 Total (i.e. Null);  99 Residual
-Null Deviance:	    140.6 
-Residual Deviance: 124.9 	AIC: 132.9
+Coefficients:
+                          Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                 1.0986     0.4714   2.331 0.019779 *  
+LOCALIZACION_ANEURISMABAS  -0.8109     0.8975  -0.904 0.366252    
+LOCALIZACION_ANEURISMAICA  -2.0302     0.5740  -3.537 0.000405 ***
+LOCALIZACION_ANEURISMAMCA  -1.7346     0.6262  -2.770 0.005607 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 140.60  on 102  degrees of freedom
+Residual deviance: 124.87  on  99  degrees of freedom
+AIC: 132.87
+
+Number of Fisher Scoring iterations: 4
 #+end_example
 
 #+BEGIN_SRC R  :results output :exports results :cache yes
@@ -631,3 +640,4 @@ AIC: 137.41
 
 Number of Fisher Scoring iterations: 4
 #+end_example
+

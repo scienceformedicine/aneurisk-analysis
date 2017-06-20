@@ -1,6 +1,35 @@
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org5e171ba">1. Intro</a></li>
+<li><a href="#orgd8a8c04">2. Descriptive Analysis</a>
+<ul>
+<li><a href="#org24e41e9">2.1. Individual viariable statistical analysis</a></li>
+<li><a href="#orga67c4c2">2.2. Histograms of sacVolume and sacSurfaceArea</a></li>
+</ul>
+</li>
+<li><a href="#orgfbf7373">3. Variable selection</a></li>
+<li><a href="#org4b04072">4. Data preprocessing</a></li>
+<li><a href="#orgaa5fd17">5. Non-linear manifold learning</a>
+<ul>
+<li><a href="#orga9cd0b1">5.1. Locally Linear Embedding - LLE</a></li>
+<li><a href="#org0e1c3f4">5.2. IsoMap</a></li>
+</ul>
+</li>
+<li><a href="#orgb3de722">6. Regression Models</a>
+<ul>
+<li><a href="#org6c6c5aa">6.1. Logistic regression of rupture/unruptered variable</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 We analyze the aneurisk data set containing decriptive variables of patients showing ruptured and
 unruptured aneurisms.
 
+
+<a id="org5e171ba"></a>
 
 # Intro
 
@@ -9,10 +38,12 @@ characteristics in the data. In the following section we try out some preliminar
 correlations that may prove useful for future, more realistic models.
 
 
+<a id="orgd8a8c04"></a>
+
 # Descriptive Analysis
 
-    source("../SOURCE-S4M/aneurisk.R")
 
+<a id="org24e41e9"></a>
 
 ## Individual viariable statistical analysis
 
@@ -231,6 +262,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
     
     ![img](../FIGS-S4M/neckVesselAngle.png)
 
+![img](../FIGS-S4M/neckVesselAngle_UR.png)
+
 -   $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
     -sacVesselAngle presents a skewed distribution.
     
@@ -238,6 +271,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
         0.5619  16.6913  32.8631  40.2026  57.0421 146.9719
     
     ![img](../FIGS-S4M/sacVesselAngle.png)
+    
+    ![img](../FIGS-S4M/sacVesselAngle_UR.png)
 
 -   $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
     
@@ -256,6 +291,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ![img](../FIGS-S4M/tortuosity.png)
     
     Many low tortuosity with a broad group of higher tortuosity
+    
+    ![img](../FIGS-S4M/tortuosity_UR.png)
 
 -   $ aspectRatio\_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
     
@@ -265,6 +302,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ![img](../FIGS-S4M/aspectRatio_star.png)
     
     Skewed and long tailed
+    
+    ![img](../FIGS-S4M/aspectRatio_star_UR.png)
 
 -   $ sizeRatio\_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
     
@@ -274,6 +313,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
     ![img](../FIGS-S4M/sizeRatio_star.png)
     
     Asymmetric but narrow-ish distribution
+    
+    ![img](../FIGS-S4M/sizeRatio_star_UR.png)
 
 -   $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
     
@@ -321,6 +362,8 @@ Contingency tables for categorical variables and main statistical descriptors fo
 Asymmetric, similar to others
 
 
+<a id="orga67c4c2"></a>
+
 ## Histograms of sacVolume and sacSurfaceArea
 
 Histograms are approximately the same for volume and surface both for ruptured and unruptured
@@ -330,6 +373,8 @@ aneurisms.
 
 ![img](../FIGS-S4M/sacSurfaceArea_histogram.png)
 
+
+<a id="orgfbf7373"></a>
 
 # Variable selection
 
@@ -355,6 +400,8 @@ On the other hand, we do not consider the following variables:
 -   bifurcationAngleInPlane
 
 
+<a id="org4b04072"></a>
+
 # Data preprocessing
 
 We perform several transformations to the variables for comparison purposes as well as to work with
@@ -366,17 +413,21 @@ variables with less skewness. In particular we are able to combine any of the fo
 -   PCA (dimensionality reduction, both d=2 and d=3)
 
 
+<a id="orgaa5fd17"></a>
+
 # Non-linear manifold learning
 
 We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
 
-    Error: invalid argument: data argument is required to be a N x D matrix (N samples, D features)
 
+<a id="orga9cd0b1"></a>
 
 ## Locally Linear Embedding - LLE
 
 ![img](../FIGS-S4M/lle.png)
 
+
+<a id="org0e1c3f4"></a>
 
 ## IsoMap
 
@@ -391,28 +442,79 @@ We perform Isomap on these 4 variables, and reduce dimensionality to 3. We plot 
 
 ![img](../FIGS-S4M/isomap.png)
 
+In 3D:
+
+<img style="WIDTH:600px; HEIGHT:420px; border:0" src="../FIGS-S4M/isomap3d.png">
+
+
+<a id="orgb3de722"></a>
 
 # Regression Models
 
+
+<a id="org6c6c5aa"></a>
 
 ## Logistic regression of rupture/unruptered variable
 
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
 
+    logreg <- glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = "binomial", data = a) 
+    print(summary(logreg))
+
     
-    Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
-        data = a)
+    Call:
+    glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
+        family = "binomial", data = a)
+    
+    Deviance Residuals: 
+        Min       1Q   Median       3Q      Max  
+    -1.8652  -1.1384   0.5768   1.0398   1.7332  
     
     Coefficients:
-                  (Intercept)  LOCALIZACION_ANEURISMABAS  
-                       1.0986                    -0.8109  
-    LOCALIZACION_ANEURISMAICA  LOCALIZACION_ANEURISMAMCA  
-                      -2.0302                    -1.7346  
+                  Estimate Std. Error z value Pr(>|z|)   
+    (Intercept)   -0.12486    0.91121  -0.137  0.89101   
+    SEXOM          0.14468    0.47067   0.307  0.75855   
+    EDAD          -0.01762    0.01627  -1.083  0.27872   
+    tortuosity     1.59231    0.58774   2.709  0.00674 **
+    MORPHO_SHAPE1  1.04365    0.56675   1.841  0.06555 . 
+    MORPHO_SHAPE2  1.10000    0.53028   2.074  0.03805 * 
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
-    Degrees of Freedom: 102 Total (i.e. Null);  99 Residual
-    Null Deviance:	    140.6 
-    Residual Deviance: 124.9 	AIC: 132.9
+    (Dispersion parameter for binomial family taken to be 1)
+    
+        Null deviance: 140.60  on 102  degrees of freedom
+    Residual deviance: 126.45  on  97  degrees of freedom
+    AIC: 138.45
+    
+    Number of Fisher Scoring iterations: 3
+
+    
+    Call:
+    glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
+        data = a)
+    
+    Deviance Residuals: 
+        Min       1Q   Median       3Q      Max  
+    -1.6651  -0.8684  -0.8150   0.9082   1.5898  
+    
+    Coefficients:
+                              Estimate Std. Error z value Pr(>|z|)    
+    (Intercept)                 1.0986     0.4714   2.331 0.019779 *  
+    LOCALIZACION_ANEURISMABAS  -0.8109     0.8975  -0.904 0.366252    
+    LOCALIZACION_ANEURISMAICA  -2.0302     0.5740  -3.537 0.000405 ***
+    LOCALIZACION_ANEURISMAMCA  -1.7346     0.6262  -2.770 0.005607 ** 
+    ---
+    Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+    
+    (Dispersion parameter for binomial family taken to be 1)
+    
+        Null deviance: 140.60  on 102  degrees of freedom
+    Residual deviance: 124.87  on  99  degrees of freedom
+    AIC: 132.87
+    
+    Number of Fisher Scoring iterations: 4
 
     
     Call:

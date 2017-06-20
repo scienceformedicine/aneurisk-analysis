@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-06-20 Tue 02:33 -->
+<!-- 2017-06-20 Tue 11:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ANEURISK DATA ANALYSIS</title>
@@ -229,13 +229,40 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">ANEURISK DATA ANALYSIS</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgdde062a">1. Intro</a></li>
+<li><a href="#orgef7dc52">2. Descriptive Analysis</a>
+<ul>
+<li><a href="#orge3ab24a">2.1. Individual viariable statistical analysis</a></li>
+<li><a href="#org89faf6f">2.2. Histograms of sacVolume and sacSurfaceArea</a></li>
+</ul>
+</li>
+<li><a href="#org232200a">3. Variable selection</a></li>
+<li><a href="#orge1ea4a1">4. Data preprocessing</a></li>
+<li><a href="#orgad3526f">5. Non-linear manifold learning</a>
+<ul>
+<li><a href="#org9aaff16">5.1. Locally Linear Embedding - LLE</a></li>
+<li><a href="#org44e2882">5.2. IsoMap</a></li>
+</ul>
+</li>
+<li><a href="#orga85e8b0">6. Regression Models</a>
+<ul>
+<li><a href="#org0cc9915">6.1. Logistic regression of rupture/unruptered variable</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <p>
 We analyze the aneurisk data set containing decriptive variables of patients showing ruptured and
 unruptured aneurisms.
 </p>
 
-<div id="outline-container-org8ad9cd1" class="outline-2">
-<h2 id="org8ad9cd1"><span class="section-number-2">1</span> Intro</h2>
+<div id="outline-container-orgdde062a" class="outline-2">
+<h2 id="orgdde062a"><span class="section-number-2">1</span> Intro</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 In the next section we make an exploratory descriptive statistical analysis, to probe the main
@@ -245,17 +272,11 @@ correlations that may prove useful for future, more realistic models.
 </div>
 </div>
 
-<div id="outline-container-org7888e53" class="outline-2">
-<h2 id="org7888e53"><span class="section-number-2">2</span> Descriptive Analysis</h2>
+<div id="outline-container-orgef7dc52" class="outline-2">
+<h2 id="orgef7dc52"><span class="section-number-2">2</span> Descriptive Analysis</h2>
 <div class="outline-text-2" id="text-2">
-<div class="org-src-container">
-<pre class="src src-R"><span style="color: #bbdaff;">source</span>(<span style="color: #99ffff;">"../SOURCE-S4M/aneurisk.R"</span>)
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgbb9b5c3" class="outline-3">
-<h3 id="orgbb9b5c3"><span class="section-number-3">2.1</span> Individual viariable statistical analysis</h3>
+</div><div id="outline-container-orge3ab24a" class="outline-3">
+<h3 id="orge3ab24a"><span class="section-number-3">2.1</span> Individual viariable statistical analysis</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Contingency tables for categorical variables and main statistical descriptors for continuous variables.
@@ -479,7 +500,16 @@ $ neckVesselAngle        : num  42.6 84.1 44 39.8 60 &#x2026;
 <p><img src="../FIGS-S4M/neckVesselAngle.png" alt="neckVesselAngle.png" />
 </p>
 </div></li>
+</ul>
 
+
+
+<div class="figure">
+<p><img src="../FIGS-S4M/neckVesselAngle_UR.png" alt="neckVesselAngle_UR.png" />
+</p>
+</div>
+
+<ul class="org-ul">
 <li><p>
 $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
 -sacVesselAngle presents a skewed distribution.
@@ -495,8 +525,17 @@ $ sacVesselAngle         : num  33.82 94.53 52.29 4.98 56.48 &#x2026;
 <div class="figure">
 <p><img src="../FIGS-S4M/sacVesselAngle.png" alt="sacVesselAngle.png" />
 </p>
-</div></li>
+</div>
 
+
+<div class="figure">
+<p><img src="../FIGS-S4M/sacVesselAngle_UR.png" alt="sacVesselAngle_UR.png" />
+</p>
+</div></li>
+</ul>
+
+
+<ul class="org-ul">
 <li><p>
 $ bifurcationAngleInPlane: num  76.7 116.8 123.7 129.8 117.1 &#x2026;
 </p>
@@ -534,7 +573,13 @@ $ tortuosity             : num  0.683 1.153 0.805 0.838 0.549 &#x2026;
 
 <p>
 Many low tortuosity with a broad group of higher tortuosity
-</p></li>
+</p>
+
+
+<div class="figure">
+<p><img src="../FIGS-S4M/tortuosity_UR.png" alt="tortuosity_UR.png" />
+</p>
+</div></li>
 
 <li><p>
 $ aspectRatio_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
@@ -553,7 +598,13 @@ $ aspectRatio_star       : num  1.499 1.839 0.948 0.706 1.827 &#x2026;
 
 <p>
 Skewed and long tailed
-</p></li>
+</p>
+
+
+<div class="figure">
+<p><img src="../FIGS-S4M/aspectRatio_star_UR.png" alt="aspectRatio_star_UR.png" />
+</p>
+</div></li>
 
 <li><p>
 $ sizeRatio_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
@@ -572,7 +623,13 @@ $ sizeRatio_star         : num  2.01 2.83 1.1 1.05 2.42 &#x2026;
 
 <p>
 Asymmetric but narrow-ish distribution
-</p></li>
+</p>
+
+
+<div class="figure">
+<p><img src="../FIGS-S4M/sizeRatio_star_UR.png" alt="sizeRatio_star_UR.png" />
+</p>
+</div></li>
 
 <li><p>
 $ sacVolume              : num  125.26 119 12.74 9.38 37.93 &#x2026;
@@ -672,8 +729,8 @@ Asymmetric, similar to others
 </p>
 </div>
 </div>
-<div id="outline-container-org3e1e66c" class="outline-3">
-<h3 id="org3e1e66c"><span class="section-number-3">2.2</span> Histograms of sacVolume and sacSurfaceArea</h3>
+<div id="outline-container-org89faf6f" class="outline-3">
+<h3 id="org89faf6f"><span class="section-number-3">2.2</span> Histograms of sacVolume and sacSurfaceArea</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Histograms are approximately the same for volume and surface both for ruptured and unruptured
@@ -695,8 +752,8 @@ aneurisms.
 </div>
 </div>
 
-<div id="outline-container-org3d27043" class="outline-2">
-<h2 id="org3d27043"><span class="section-number-2">3</span> Variable selection</h2>
+<div id="outline-container-org232200a" class="outline-2">
+<h2 id="org232200a"><span class="section-number-2">3</span> Variable selection</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Our response or dependent variable will be considered to be ESTADO_RUPTURA. We concentrate in the
@@ -727,8 +784,8 @@ On the other hand, we do not consider the following variables:
 </ul>
 </div>
 </div>
-<div id="outline-container-orge6b7c42" class="outline-2">
-<h2 id="orge6b7c42"><span class="section-number-2">4</span> Data preprocessing</h2>
+<div id="outline-container-orge1ea4a1" class="outline-2">
+<h2 id="orge1ea4a1"><span class="section-number-2">4</span> Data preprocessing</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 We perform several transformations to the variables for comparison purposes as well as to work with
@@ -743,17 +800,16 @@ variables with less skewness. In particular we are able to combine any of the fo
 </div>
 </div>
 
-
-<div id="outline-container-org6680ba3" class="outline-2">
-<h2 id="org6680ba3"><span class="section-number-2">5</span> Non-linear manifold learning</h2>
+<div id="outline-container-orgad3526f" class="outline-2">
+<h2 id="orgad3526f"><span class="section-number-2">5</span> Non-linear manifold learning</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
 </p>
 </div>
 
-<div id="outline-container-org6a9ae24" class="outline-3">
-<h3 id="org6a9ae24"><span class="section-number-3">5.1</span> Locally Linear Embedding - LLE</h3>
+<div id="outline-container-org9aaff16" class="outline-3">
+<h3 id="org9aaff16"><span class="section-number-3">5.1</span> Locally Linear Embedding - LLE</h3>
 <div class="outline-text-3" id="text-5-1">
 
 <div class="figure">
@@ -763,8 +819,8 @@ We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
 </div>
 </div>
 
-<div id="outline-container-orga06eec2" class="outline-3">
-<h3 id="orga06eec2"><span class="section-number-3">5.2</span> IsoMap</h3>
+<div id="outline-container-org44e2882" class="outline-3">
+<h3 id="org44e2882"><span class="section-number-3">5.2</span> IsoMap</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 The figure below is a straightforward application of Isomap with data preprocessing, including
@@ -800,12 +856,11 @@ In 3D:
 </div>
 </div>
 
-
-<div id="outline-container-orgd242d1f" class="outline-2">
-<h2 id="orgd242d1f"><span class="section-number-2">6</span> Regression Models</h2>
+<div id="outline-container-orga85e8b0" class="outline-2">
+<h2 id="orga85e8b0"><span class="section-number-2">6</span> Regression Models</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-org09bff41" class="outline-3">
-<h3 id="org09bff41"><span class="section-number-3">6.1</span> Logistic regression of rupture/unruptered variable</h3>
+</div><div id="outline-container-org0cc9915" class="outline-3">
+<h3 id="org0cc9915"><span class="section-number-3">6.1</span> Logistic regression of rupture/unruptered variable</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 A few regression models based on logistic regression (generalized linear model based on the binomial
@@ -813,26 +868,16 @@ distribution).
 </p>
 
 <div class="org-src-container">
-<pre class="src src-R">glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = <span style="color: #99ffff;">"binomial"</span>, data = asmall) 
+<pre class="src src-R">logreg <span style="color: #bbdaff;">&lt;-</span> glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = <span style="color: #99ffff;">"binomial"</span>, data = a) 
+print(summary(logreg))
+</pre>
+</div>
 
-Call:  glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
-    family = <span style="color: #99ffff;">"binomial"</span>, data = asmall)
-
-Coefficients:
-  (Intercept)          SEXOM           EDAD     tortuosity  MORPHO_SHAPE1  
-     -0.12486        0.14468       -0.01762        1.59231        1.04365  
-MORPHO_SHAPE2  
-      1.10000  
-
-Degrees of Freedom: 102 Total (i.e. Null);  97 Residual
-Null Deviance:      140.6 
-Residual Deviance: 126.5        AIC: 138.5
-
-&gt; summary(logreg)
+<pre class="example">
 
 Call:
 glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
-    family = <span style="color: #99ffff;">"binomial"</span>, data = asmall)
+    family = "binomial", data = a)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -847,34 +892,43 @@ tortuosity     1.59231    0.58774   2.709  0.00674 **
 MORPHO_SHAPE1  1.04365    0.56675   1.841  0.06555 . 
 MORPHO_SHAPE2  1.10000    0.53028   2.074  0.03805 * 
 ---
-Signif. codes:  0 &#8216;***&#8217; 0.001 &#8216;**&#8217; 0.01 &#8216;*&#8217; 0.05 &#8216;.&#8217; 0.1 &#8216; &#8217; 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-(Dispersion parameter <span style="color: #d1f1a9;">for</span> binomial family taken to be 1)
+(Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 140.60  on 102  degrees of freedom
 Residual deviance: 126.45  on  97  degrees of freedom
 AIC: 138.45
 
 Number of Fisher Scoring iterations: 3
-
 </pre>
-</div>
-
 
 <pre class="example">
 
-Call:  glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
+Call:
+glm(formula = ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, family = binomial, 
     data = a)
 
-Coefficients:
-              (Intercept)  LOCALIZACION_ANEURISMABAS  
-                   1.0986                    -0.8109  
-LOCALIZACION_ANEURISMAICA  LOCALIZACION_ANEURISMAMCA  
-                  -2.0302                    -1.7346  
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.6651  -0.8684  -0.8150   0.9082   1.5898  
 
-Degrees of Freedom: 102 Total (i.e. Null);  99 Residual
-Null Deviance:	    140.6 
-Residual Deviance: 124.9 	AIC: 132.9
+Coefficients:
+                          Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)                 1.0986     0.4714   2.331 0.019779 *  
+LOCALIZACION_ANEURISMABAS  -0.8109     0.8975  -0.904 0.366252    
+LOCALIZACION_ANEURISMAICA  -2.0302     0.5740  -3.537 0.000405 ***
+LOCALIZACION_ANEURISMAMCA  -1.7346     0.6262  -2.770 0.005607 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 140.60  on 102  degrees of freedom
+Residual deviance: 124.87  on  99  degrees of freedom
+AIC: 132.87
+
+Number of Fisher Scoring iterations: 4
 </pre>
 
 <pre class="example">
@@ -968,7 +1022,7 @@ Number of Fisher Scoring iterations: 4
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: moyano</p>
-<p class="date">Created: 2017-06-20 Tue 02:33</p>
+<p class="date">Created: 2017-06-20 Tue 11:50</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
