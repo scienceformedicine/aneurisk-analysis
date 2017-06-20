@@ -20,7 +20,7 @@ ctrl <- trainControl(method = "repeatedcv", repeats = 3, classProbs = TRUE, summ
 ## Partial Least Squares
 
 ## Call train function.
-plsFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "pls", tuneLength = 15, trControl = ctrl, metric = "ROC")
+plsFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "pls", tuneLength = 15, trControl = ctrl, preProcess=c("BoxCox","nzv","scale","center","pca"), metric = "ROC")
 plsFit
 
 ## predict new samples
@@ -33,5 +33,9 @@ confusionMatrix(data = plsClasses, testing$ESTADO_RUPTURA_B)
 ## ------------------------------------------------------------
 ## KNN + PCA
 
-knnFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "knn", preProcess=c("pca"), trControl = trainControl(method = "cv"), metric = "ROC")
+knnFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "knn", preProcess=c("scale","center","pca"), trControl = ctrl)
+knnFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "knn", preProcess=c("YeoJohnson","nzv","scale","center"), trControl = ctrl)
+knnFit <- train(ESTADO_RUPTURA_B ~ ., data = training, method = "knn", preProcess=c("BoxCox","nzv","scale","center","pca"), trControl = ctrl)
 knnFit
+
+

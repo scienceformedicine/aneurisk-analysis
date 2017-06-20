@@ -4,3 +4,5 @@
 if(!("tidyverse"  %in% loadedNamespaces())) library(tidyverse)
 if(!("caret"      %in% loadedNamespaces())) library(caret)
 if(!("RDRToolbox" %in% loadedNamespaces())) library(RDRToolbox)
+if(!("plotly"     %in% loadedNamespaces())) library(plotly)
+if(!("rgl"        %in% loadedNamespaces())) library(rgl)

@@ -299,49 +299,173 @@ Contingency tables for categorical variables and main statistical descriptors fo
   [[file:../FIGS-S4M/sacSectionArea.png]]
 
   Asymmetric, similar to others
-* Dimensionality reduction
+** Histograms of sacVolume and sacSurfaceArea
+
+Histograms are approximately the same for volume and surface both for ruptured and unruptured
+aneurisms.
+
+#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/sacVolume_histogram.png" :exports results :cache yes
+  ggplot(data = aneurisk, x = sacVolume) + geom_histogram(aes(x = sacVolume, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3,
+                                                          colour =
+                                                              "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO","ROTO")) + xlab("Volumen") + ylab("Frecuencia") 
+#+END_SRC
+
+#+RESULTS[804eda1b35dd68d89f26e94dfdbee8a521588315]:
+[[file:../FIGS-S4M/sacVolume_histogram.png]]
+
+#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/sacSurfaceArea_histogram.png" :exports results :cache yes
+  ggplot(data = aneurisk, x = sacSurfaceArea) + geom_histogram(aes(x = sacSurfaceArea, y = ..count.., fill = ESTADO_RUPTURA), bins = 50, alpha = 0.3, colour = "blue", size = .10) + scale_fill_manual(name="Estado del\naneurisma", values = c("blue", "red"), labels=c("NO ROTO", "ROTO")) + xlab("Área")   + ylab("Frecuencia") 
+#+END_SRC
+
+#+RESULTS[70e9eda640db660aecb7a7c29a53dc58f50bf544]:
+[[file:../FIGS-S4M/sacSurfaceArea_histogram.png]]
+
+* Variable selection
+Our response or dependent variable will be considered to be ESTADO_RUPTURA. We concentrate in the
+following subset of predictor or independent variables:
+
+- aspectRatio_star
+- sizeRatio_star
+- tortuosity
+- MORPHO_SHAPE
+- SEXO
+- EDAD
+
+On the other hand, we do not consider the following variables:
+- ID
+- fusiforme (pendiente)
+- sacVolume
+- sacSurfaceArea
+- MULTIPLE_ANEURISMA
+- neckVesselAngle
+- sacVesselAngle
+- bifurcationAngleInPlane
+* Data preprocessing
+
+We perform several transformations to the variables for comparison purposes as well as to work with
+variables with less skewness. In particular we are able to combine any of the following: 
+- center (mean substraction)
+- scale  (standard deviation for normalization)
+- Box-Cox transformation (decrease skewness)
+- PCA (dimensionality reduction, both d=2 and d=3)
+
+  
+* Non-linear manifold learning
+We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
 
 #+BEGIN_SRC R  :results output :exports results :cache yes
 library(RDRToolbox)
 
 ## prepare matrix 
-a_rdx <- as.matrix(a[, sapply(a, is.numeric)])
-#+END_SRC
+## a_rdx <- as.matrix(a[, sapply(a, is.numeric)])
+asmall <- a %>% select(ESTADO_RUPTURA, aspectRatio_star, sizeRatio_star, tortuosity, MORPHO_SHAPE, SEXO, EDAD) %>% as.data.frame
 
-#+RESULTS[54b4aa7a6a6ec1ec438020d8c927a9cc2e7a99f3]:
-
-** Locally Linear Embedding - LLE
-#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/lle.png" :exports results :cache yes
-LLE_dim2_a <- LLE(a_rdx, 2, 10)
-plotDR(as.data.frame(LLE_dim2_a), labels = as.numeric(a$ESTADO_RUPTURA_B))
-ggplot(data = LLE_dim2_a %>% as.data.frame, aes(V1, V2)) + geom_point(aes(colour = a$ESTADO_RUPTURA_B == 'U')) + guides(colour=FALSE)
-#+END_SRC
-
-#+RESULTS[c77716ab66290f029c5cf2bf38d6d86397241465]:
-[[file:../FIGS-S4M/lle.png]]
-
-** IsoMap
-#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/isomap.png" :exports results :cache yes
+## preprocess data
+apre_cs <- preProcess(asmall, method = c("center", "scale"))
+prea_cs <- predict(apre_cs, asmall)
+a_rdx   <- as.matrix(prea_cs[, c(-1, -5, -6)])
 
 ## variable selection 
-## a_rdx <- a_rdx[, c(-1, -5)] ## deselect EDAD and tortuosity
 ## a_rdx <- a_rdx[, c(2:8)]
 
-IM_dim1to10_a <- Isomap(a_rdx, 1:10, 10, plotResiduals=TRUE)
-IM_dim1to10_a_mod <- Isomap(a_rdx, 1:10, 10, plotResiduals=TRUE, mod = TRUE)
-
-IM_dim2_a_mod <- Isomap(a_rdx, 2, 10, mod = TRUE)
-##plotDR(as.data.frame(IM_dim2_a_mod), labels = a$ESTADO_RUPTURA_B)
-ggplot(data = IM_dim2_a_mod$dim2 %>% as.data.frame, aes(V1, V2)) + geom_point(aes(colour = a$ESTADO_RUPTURA_B == 'U')) + guides(colour=FALSE)
 #+END_SRC
 
-#+RESULTS[9c1db62255ea18c0eef9ac1dd67120f35cc8b5f9]:
+#+RESULTS[ad80ac4aaa0995d6aa8f4493660abe945582d34f]:
+
+** Locally Linear Embedding - LLE
+#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/lle.png" :exports results :cache no
+LLE_dim2_a <- LLE(a_rdx, 2, 10)
+plotDR(as.data.frame(LLE_dim2_a), labels = as.numeric(a$ESTADO_RUPTURA))
+ggplot(data = LLE_dim2_a %>% as.data.frame, aes(V1, V2)) + geom_point(aes(colour = a$ESTADO_RUPTURA == 'U')) + guides(colour=FALSE)
+#+END_SRC
+
+** IsoMap
+
+The figure below is a straightforward application of Isomap with data preprocessing, including
+only continuous data ("aspectRatio_star", "sizeRatio_star", "tortuosity", "EDAD").
+
+In the following we explore residual variance accross the different dimensions.
+#+BEGIN_SRC R  :results graphics :file "../FIGS-S4M/isomap_residuals_vs_dim.png" :exports results :cache yes
+
+  IM_dim1to10_a <- Isomap(a_rdx, 1:4, 10, plotResiduals=TRUE)
+  IM_dim1to10_a_mod <- Isomap(a_rdx, 1:4, 10, plotResiduals=TRUE, mod = TRUE)
+
+#+END_SRC
+
+#+RESULTS[9d3bcc58add027aff40b9e4688f1c1297f689806]:
+[[file:../FIGS-S4M/isomap_residuals_vs_dim.png]]
+
+We perform Isomap on these 4 variables, and reduce dimensionality to 3. We plot only the first two components.
+
+#+BEGIN_SRC R :results graphics :file "../FIGS-S4M/isomap.png" :exports results :cache no
+IM_dim2_a_mod <- Isomap(a_rdx, 3, 10, mod = FALSE)
+##plotDR(as.data.frame(IM_dim2_a_mod), labels = a$ESTADO_RUPTURA_B)
+ggplot(data = IM_dim2_a_mod %>% as.data.frame, aes(dim3.1, dim3.2)) + geom_point(aes(colour = a$ESTADO_RUPTURA_B == 1)) + guides(colour=FALSE)
+#+END_SRC
+
+#+RESULTS[636ab6610baa6bab07869e3637fe00bcc71e5f17]:
 [[file:../FIGS-S4M/isomap.png]]
+
+
+In 3D:
+
+#+BEGIN_EXPORT html
+<img style="WIDTH:600px; HEIGHT:420px; border:0" src="../FIGS-S4M/isomap3d.png">
+#+END_EXPORT
+
 
 * Regression Models
 ** Logistic regression of rupture/unruptered variable
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
+
+#+BEGIN_SRC R 
+glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = "binomial", data = asmall) 
+
+Call:  glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
+    family = "binomial", data = asmall)
+
+Coefficients:
+  (Intercept)          SEXOM           EDAD     tortuosity  MORPHO_SHAPE1  
+     -0.12486        0.14468       -0.01762        1.59231        1.04365  
+MORPHO_SHAPE2  
+      1.10000  
+
+Degrees of Freedom: 102 Total (i.e. Null);  97 Residual
+Null Deviance:	    140.6 
+Residual Deviance: 126.5 	AIC: 138.5
+
+> summary(logreg)
+
+Call:
+glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
+    family = "binomial", data = asmall)
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-1.8652  -1.1384   0.5768   1.0398   1.7332  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)   
+(Intercept)   -0.12486    0.91121  -0.137  0.89101   
+SEXOM          0.14468    0.47067   0.307  0.75855   
+EDAD          -0.01762    0.01627  -1.083  0.27872   
+tortuosity     1.59231    0.58774   2.709  0.00674 **
+MORPHO_SHAPE1  1.04365    0.56675   1.841  0.06555 . 
+MORPHO_SHAPE2  1.10000    0.53028   2.074  0.03805 * 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 140.60  on 102  degrees of freedom
+Residual deviance: 126.45  on  97  degrees of freedom
+AIC: 138.45
+
+Number of Fisher Scoring iterations: 3
+
+#+END_SRC
+
 
 #+BEGIN_SRC R :results output :exports results :cache yes
   glm(ESTADO_RUPTURA_B ~ LOCALIZACION_ANEURISMA, data = a, family=binomial)

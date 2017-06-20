@@ -321,8 +321,56 @@ Contingency tables for categorical variables and main statistical descriptors fo
 Asymmetric, similar to others
 
 
-# Dimensionality reduction
+## Histograms of sacVolume and sacSurfaceArea
 
+Histograms are approximately the same for volume and surface both for ruptured and unruptured
+aneurisms.
+
+![img](../FIGS-S4M/sacVolume_histogram.png)
+
+![img](../FIGS-S4M/sacSurfaceArea_histogram.png)
+
+
+# Variable selection
+
+Our response or dependent variable will be considered to be ESTADO\_RUPTURA. We concentrate in the
+following subset of predictor or independent variables:
+
+-   aspectRatio\_star
+-   sizeRatio\_star
+-   tortuosity
+-   MORPHO\_SHAPE
+-   SEXO
+-   EDAD
+
+On the other hand, we do not consider the following variables:
+
+-   ID
+-   fusiforme (pendiente)
+-   sacVolume
+-   sacSurfaceArea
+-   MULTIPLE\_ANEURISMA
+-   neckVesselAngle
+-   sacVesselAngle
+-   bifurcationAngleInPlane
+
+
+# Data preprocessing
+
+We perform several transformations to the variables for comparison purposes as well as to work with
+variables with less skewness. In particular we are able to combine any of the following: 
+
+-   center (mean substraction)
+-   scale  (standard deviation for normalization)
+-   Box-Cox transformation (decrease skewness)
+-   PCA (dimensionality reduction, both d=2 and d=3)
+
+
+# Non-linear manifold learning
+
+We work with two non-linear algorithms to go beyond PCA: LLE and Isomap.
+
+    Error: invalid argument: data argument is required to be a N x D matrix (N samples, D features)
 
 
 ## Locally Linear Embedding - LLE
@@ -331,6 +379,15 @@ Asymmetric, similar to others
 
 
 ## IsoMap
+
+The figure below is a straightforward application of Isomap with data preprocessing, including
+only continuous data ("aspectRatio\_star", "sizeRatio\_star", "tortuosity", "EDAD").
+
+In the following we explore residual variance accross the different dimensions.
+
+![img](../FIGS-S4M/isomap_residuals_vs_dim.png)
+
+We perform Isomap on these 4 variables, and reduce dimensionality to 3. We plot only the first two components.
 
 ![img](../FIGS-S4M/isomap.png)
 
