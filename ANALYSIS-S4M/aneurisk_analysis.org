@@ -1,6 +1,6 @@
 #+TITLE: ANEURISK DATA ANALYSIS
 #+STARTUP: showall expand
-#+options: toc: yes
+#+options: toc: 2
 #+OPTIONS: ^:nil _:nil
 
 # Babel settings
@@ -23,8 +23,8 @@ correlations that may prove useful for future, more realistic models.
 
 * Descriptive Analysis
 
-#+BEGIN_SRC R :exports code :results none :cache yes 
-source("../SOURCE-S4M/aneurisk.R")
+#+BEGIN_SRC R :exports results :results none :cache yes 
+## source("../SOURCE-S4M/aneurisk.R")
 #+END_SRC
 
 ** Individual viariable statistical analysis
@@ -470,27 +470,17 @@ In 3D:
 A few regression models based on logistic regression (generalized linear model based on the binomial
 distribution).
 
-#+BEGIN_SRC R 
-glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = "binomial", data = asmall) 
+#+BEGIN_SRC R  :results output :exports both :cache no
+logreg <- glm(ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, family = "binomial", data = a) 
+print(summary(logreg))
+#+END_SRC
 
-Call:  glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
-    family = "binomial", data = asmall)
-
-Coefficients:
-  (Intercept)          SEXOM           EDAD     tortuosity  MORPHO_SHAPE1  
-     -0.12486        0.14468       -0.01762        1.59231        1.04365  
-MORPHO_SHAPE2  
-      1.10000  
-
-Degrees of Freedom: 102 Total (i.e. Null);  97 Residual
-Null Deviance:	    140.6 
-Residual Deviance: 126.5 	AIC: 138.5
-
-> summary(logreg)
+#+RESULTS[cbeb7a9599510a2b76acb162d6befcf895386aa8]:
+#+begin_example
 
 Call:
 glm(formula = ESTADO_RUPTURA ~ SEXO + EDAD + tortuosity + MORPHO_SHAPE, 
-    family = "binomial", data = asmall)
+    family = "binomial", data = a)
 
 Deviance Residuals: 
     Min       1Q   Median       3Q      Max  
@@ -514,8 +504,7 @@ Residual deviance: 126.45  on  97  degrees of freedom
 AIC: 138.45
 
 Number of Fisher Scoring iterations: 3
-
-#+END_SRC
+#+end_example
 
 
 #+BEGIN_SRC R :results output :exports results :cache yes
